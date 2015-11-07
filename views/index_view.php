@@ -16,7 +16,3 @@
 	</table>
 	
 	<li><a href="test.php">More...</a></li>
-
-</body>
-
-</html>

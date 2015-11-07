@@ -10,6 +10,6 @@
 	$uri .= $_SERVER['HTTP_HOST'];
 	header('Location: '.$uri.'/index.html');
 	exit;*/
-	render("index_view.php", []);
+	render("index_view.php", ["title" => ""]);
 ?>
 Something is wrong with the XAMPP installation :-(
