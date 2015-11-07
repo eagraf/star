@@ -9,7 +9,7 @@
 <body>
 	<?php
 		for($i = 1; $i < 11; $i++)
-			print $i . " reasons to suck my dick, "
+			print $i . " reasons to suck Taiga's dick, "
 		
 	?>
 	<li><a href="index.html">Back</a></li>
