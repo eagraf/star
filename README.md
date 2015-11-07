@@ -1,2 +1,2 @@
 # star
-The best thing ever. A RYEE production.
+Could be the best thing ever. A RYEE production.
