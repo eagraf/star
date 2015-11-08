@@ -3,8 +3,8 @@
 
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Score</th>
+                <th>Name:</th>
+                <th>Stars:</th>
             </tr>
         </thead>
 

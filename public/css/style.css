@@ -17,11 +17,14 @@
     /* surround with whitespace */
     margin-bottom: 45px;
     margin-top: 45px;
+	
 }
 
 body {
     color: white;
-	background-color: #00CCFF;
+	background-color: #2EB8B8;
+	color: #C2F0F0
+	
 }
 
 form{
@@ -48,7 +51,7 @@ form{
 {
    /* left-align tables' cells */
    text-align: left;
-   color: black;
+   color: #C2F0F0
    background-color: #white;
 }
 
