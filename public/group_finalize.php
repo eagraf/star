@@ -9,7 +9,7 @@
 	//if user email already exists, go it it and update the group id
 
     // else if user reached page via POST (as by submitting a form via POST)
-    else if ($_SERVER["REQUEST_METHOD"] == "POST")
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
     {	
 		$i = 0;
 		$nameindex = "name" . "$i";
