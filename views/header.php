@@ -13,11 +13,7 @@
 		<?php else: ?>
 			<title>Star</title>
 		<?php endif ?>
-		
-		<?php print("SESSION: ".$_SESSION["id"]);?>
-		
-		<li><a href="logout.php"><strong>Log Out</strong></a></li>
-		
+	
 		<!-- https://jquery.com/ -->
         <script src="/js/jquery-1.11.3.min.js"></script>
 
@@ -37,6 +33,13 @@
                 <div>
                     <a href="/"><img alt="Star" src="/img/star_logo.png"/></a>
                 </div>
+				<?php if (!empty($_SESSION["id"])): ?>
+                    <ul class="nav nav-pills">
+                        <li><a href="compare.php">Compare</a></li>
+                        <li><a href="board.php">Board</a></li>
+                        <li><a href="logout.php">Log Out</a></li>
+                    </ul>
+                <?php endif ?>
             </div>
 
             <div id="middle">
