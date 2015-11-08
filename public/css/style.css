@@ -58,3 +58,8 @@ form{
     /* surround with whitespace */
     margin: 60px;
 }
+
+#header h1
+{
+	display: inline; 
+}

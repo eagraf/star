@@ -77,4 +77,26 @@
     {
         render("error.php", ["message" => $message]);
     }
+	
+	/**
+     * Query helper function.
+     */
+    function query($sql)
+    {
+        $user = 'root';
+		$pass = '';
+		$db = 'star';
+		
+		$db = new mysqli('localhost', $user, $pass, $db) or die ("unable to connect");
+        // query database for user
+        $result = mysqli_query($db, $sql);
+		if(gettype($result) != "boolean")
+		{
+			while($row = $result->fetch_assoc()) {
+				$rows[] = $row;
+			}
+			return $rows;
+		}
+		
+    }
 ?>

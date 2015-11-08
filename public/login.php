@@ -22,6 +22,7 @@
         {
             error("You must provide your password.");
         }
+
 		$user = 'root';
 		$pass = '';
 		$db = 'star';
@@ -30,6 +31,10 @@
         // query database for user
         $result = mysqli_query($db, "SELECT * FROM users WHERE name = 'Sam Rackey';");
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+	
+		$row = query("SELECT * FROM users WHERE username = 'ethan';");
+
         if(!empty($row))
 		{
 			// remember that user's now logged in by storing user's ID in session
