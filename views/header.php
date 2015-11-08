@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-
+	<link href="/css/style.css" rel="stylesheet"/>
 	<?php if (isset($title)): ?>
 		<title>Star: <?= htmlspecialchars($title) ?></title>
 	<?php else: ?>
@@ -10,7 +10,7 @@
 	
 	</head>
 
-        <link href="/css/styles.css" rel="stylesheet"/>
+        
 
         <?php if (isset($title)): ?>
             <title>C$50 Finance: <?= htmlspecialchars($title) ?></title>
@@ -29,5 +29,5 @@
                     <a href="/"><img alt="Star" src="/img/star_logo.png"/></a>
                 </div>
             </div>
-
+			<hr>
             <div id="middle">

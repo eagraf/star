@@ -15,9 +15,19 @@
 #top
 {
     /* surround with whitespace */
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 45px;
+    margin-top: 45px;
 }
+
+body {
+    color: white;
+	background-color: #00CCFF;
+}
+
+form{
+	display: inline;
+}
+
 
 #top .nav
 {
@@ -46,5 +56,5 @@
     font-size: smaller;
 
     /* surround with whitespace */
-    margin: 20px;
+    margin: 60px;
 }
