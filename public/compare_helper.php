@@ -33,7 +33,7 @@
 				//Make sure different users are chosen.
 				while($key_b == $key_a);
 			}
-			while(!checkScores($user_a, $user_b) && !checkComps($user_a, $user_b));
+			while(!checkScores($group_users[$key_a], $group_users[$key_b]) && !checkComps($group_users[$key_a], $group_users[$key_b]));
 		}
 		$people = ["user_a" => $group_users[$key_a], "user_b" => $group_users[$key_b]];
 		return $people;
@@ -44,8 +44,15 @@
 	*/
 	function checkScores($user_a, $user_b)
 	{
-		//Absolute value of the quotient of the scores of a and b.
-		$quotient = abs($user_a['score']/$user_b['score']);
+		//Difference/average
+		$difference = abs($user_a['score'] - $user_b['score']);
+		$average = ($user_a['score'] + $user_b['score'])/2;
+		
+		if($average == 0)
+		{
+			return true;
+		}
+		$quotient = $difference/$average;
 		
 		//The quotient has to be sufficiently small in order for true to be returned.
 		if($quotient <= 0.3)
@@ -60,11 +67,18 @@
 	*/
 	function checkComps($user_a, $user_b)
 	{
-		//Absolute value of the quotient of the scores of a and b.
-		$quotient = abs($user_a['comp_num']/$user_b['comp_num']);
+		//Difference/average
+		$difference = abs($user_a['comp_num'] - $user_b['comp_num']);
+		$average = ($user_a['comp_num'] + $user_b['comp_num'])/2;
+		
+		if($average == 0)
+		{
+			return true;
+		}
+		$quotient = $difference/$average;
 		
 		//The quotient has to be sufficiently small in order for true to be returned.
-		if($quotient <= 0.3)
+		if($quotient <= 0.1)
 		{
 			return true;
 		}
