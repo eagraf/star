@@ -13,7 +13,7 @@
     function pick($group_id)
     {
 		//Get all relevant users.
-        $group_users = query("SELECT * FROM users WHERE group_id = 'Hebert-D';");
+        $group_users = query("SELECT * FROM users WHERE group_id = 'Codeday';");
 		
 		//Size of group.
 		$size = count($group_users);
