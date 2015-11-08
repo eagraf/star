@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 
 <html>
-
-	<?php if (isset($title)): ?>
-		<title>Star: <?= htmlspecialchars($title) ?></title>
-	<?php else: ?>
-		<title>Star</title>
-	<?php endif ?>
 	
 	</head>
+		<!-- http://getbootstrap.com/ -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet"/>
 
-        <link href="/css/styles.css" rel="stylesheet"/>
+        <link href="/css/style.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
-            <title>C$50 Finance: <?= htmlspecialchars($title) ?></title>
-        <?php else: ?>
-            <title>C$50 Finance</title>
-        <?php endif ?>
+			<title>Star: <?= htmlspecialchars($title) ?></title>
+		<?php else: ?>
+			<title>Star</title>
+		<?php endif ?>
+		
+		<?php print("SESSION: ".$_SESSION["id"]);?>
+		
+		<li><a href="logout.php"><strong>Log Out</strong></a></li>
+		
+		<!-- https://jquery.com/ -->
+        <script src="/js/jquery-1.11.3.min.js"></script>
+
+        <!-- http://getbootstrap.com/ -->
+        <script src="/js/bootstrap.min.js"></script>
+
+        <script src="/js/scripts.js"></script>
+
 
     </head>
 

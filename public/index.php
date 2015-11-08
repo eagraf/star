@@ -1,15 +1,9 @@
 <?php
 	// configuration
 	require("../includes/config.php"); 
-	/*
-	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-		$uri = 'https://';
-	} else {
-		$uri = 'http://';
-	}
-	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/index.html');
-	exit;*/
-	render("index_view.php", ["title" => ""]);
+
+	//render("login.php", ["title" => "Login", "db" => $db]);
+	//if(_SESSION['id'])
+	render("index_view.php", []);
 ?>
 Something is wrong with the XAMPP installation :-(
