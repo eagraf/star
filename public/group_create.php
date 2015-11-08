@@ -12,8 +12,9 @@
 
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-		render("group_finalize_form.php", ["title" => "Register"]);
+    {	
+		$size = $_POST['group_size'];
+		render("group_finalize_form.php", ["title" => "Register", "size" => $size ]);
 		
     }
 

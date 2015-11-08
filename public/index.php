@@ -4,7 +4,12 @@
 
 	//render("login.php", ["title" => "Login", "db" => $db]);
 	//if(_SESSION['id'])
-	render("index_view.php", []);
-
+	
+	
+	if(empty($_SESSION['id']))
+		render("index_view.php", []);
+	else
+		redirect("/home.php");
+	
 ?>
 Something is wrong with the XAMPP installation :-(

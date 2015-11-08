@@ -28,7 +28,7 @@
 		
 		$db = new mysqli('localhost', $user, $pass, $db) or die ("unable to connect");
         // query database for user
-        $result = mysqli_query($db, "SELECT * FROM users WHERE username = 'ethan';");
+        $result = mysqli_query($db, "SELECT * FROM users WHERE name = 'Sam Rackey';");
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         if(!empty($row))
 		{
