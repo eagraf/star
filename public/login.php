@@ -22,14 +22,8 @@
         {
             error("You must provide your password.");
         }
-		$user = 'root';
-		$pass = '';
-		$db = 'star';
-		
-		$db = new mysqli('localhost', $user, $pass, $db) or die ("unable to connect");
-        // query database for user
-        $result = mysqli_query($db, "SELECT * FROM users WHERE username = 'ethan';");
-		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	
+		$row = query("SELECT * FROM users WHERE username = 'ethan';");
         if(!empty($row))
 		{
 			// remember that user's now logged in by storing user's ID in session
