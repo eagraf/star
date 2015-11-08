@@ -23,7 +23,7 @@
             error("You must provide your password.");
         }
 
-		$row = query("SELECT * FROM users WHERE email = 'ethan';");
+		$row = query("SELECT * FROM users WHERE email = 'graf.ethan@gmail.com';");
 
         if(!empty($row))
 		{
