@@ -12,7 +12,7 @@
      */
     function pick($group_id)
     {
-        $group_users = query("SELECT * FROM users WHERE group_id = '0';");
+        $group_users = query("SELECT * FROM users WHERE group_id = 'Hebert-D';");
 	
 		$size = count($group_users);
 		if($size < 2)
