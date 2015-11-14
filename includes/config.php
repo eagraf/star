@@ -10,7 +10,7 @@
     session_start();
 	
 	// require authentication for all pages except /login.php, /logout.php, and /register.php
-    if (!in_array($_SERVER["PHP_SELF"], ["/login.php", "/index.php", "/group_create.php", "/group_finalize.php", "/test.php", "/tests/*"]))
+    if (!in_array($_SERVER["PHP_SELF"], ["/login.php", "/index.php", "/group_create.php", "/about.php" , "/group_finalize.php", "/test.php", "/tests/*"]))
     {
 		//Otherwise redirect to login.
         if (empty($_SESSION["id"]))

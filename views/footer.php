@@ -1,5 +1,5 @@
 <div id="bottom">
-    A RYEE Production
+    Copyright <a href="about.php">RYEE</a> 2015
 </div>
 
 </div>

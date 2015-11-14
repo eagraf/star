@@ -6,13 +6,13 @@
 	//if(_SESSION['id'])
 	
 	//Testing.
-	redirect("test.php");
-	/*
+	//redirect("test.php");
+	
 	if(empty($_SESSION['id']))
 		render("index_view.php", []);
 	else
 		redirect("/home.php");
-	*/
+	
 	
 	
 	
