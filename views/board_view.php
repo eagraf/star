@@ -11,16 +11,20 @@
         <tbody>
 		
             <?php
-
+			$i = 0;
             foreach ($ranks as $rank)
             {
 				
+				if($i < 10){
                 print("<tr>");
                 print("<td>{$rank["name"]}</td>");
                 print("<td>{$rank["score"]}</td>");
                 print("</tr>");
-            }
-
+				}
+				$i++;
+				
+            
+			}
             ?>
 
         </tbody>

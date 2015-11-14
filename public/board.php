@@ -1,8 +1,8 @@
 <?php
 	require("../includes/config.php");
-	$result = query("UPDATE `users` SET score = (score / comp_num) * 20;");
-	$rows = query("Select name, score, comp_num FROM users WHERE `group_id` = \"Codeday\" ORDER BY `users`.`score` DESC");
-	$result = query("UPDATE `users` SET score = (score * comp_num) / 20;");
+	$result = query("UPDATE `users` SET score = (score / comp_num) * 20 WHERE group_id = ". $_SESSION["group_id"] .";");
+	$rows = query("Select name, score, comp_num FROM users WHERE `group_id` = \"" . $_SESSION["group_id"] . "\" ORDER BY `users`.`score` DESC");
+	$result = query("UPDATE `users` SET score = (score * comp_num) / 20 WHERE group_id = ". $_SESSION["group_id"] .";");
 	
 	$ranks = [];
 	$i = 0;

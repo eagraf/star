@@ -18,7 +18,7 @@
 		while(!empty($_POST[$nameindex])){
 			$ayy = $_POST[$nameindex];
 			
-			$query = "INSERT INTO users (name, email, hash, group_id) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");";
+			$query = "INSERT INTO users (name, email, hash, group_id) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . "goat" . "\",\"" . $_POST['group_name'] . "\");";
 			$result = mysqli_query($db, $query);
 			//print $query;
 			$i++;
