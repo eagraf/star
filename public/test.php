@@ -1,15 +1,23 @@
 <?php
-	require("../includes/config.php");
-	$user = 'root';
-	$pass = '';
-	$db = 'star';
-	
-	$name = "Sam Rackey";
-	$email = "SamRCR71@gmail.com";
-	$hash = password_hash("goat", PASSWORD_DEFAULT);
-	
-	$query = "INSERT INTO users (name, email, hash) VALUES ('" . $name . "', '" . $email . "', '" . $hash . "');";
-	$db = new mysqli('localhost', 'root', '', 'star') or die("unable to connect");
-	$result = mysqli_query($db, $query);
-	render("index_view.php", ["title" => "Welcome"]); 
+
+    // configuration
+    require("../includes/config.php");
+
+    // if user reached page via GET (as by clicking a link or via redirect)
+    if ($_SERVER["REQUEST_METHOD"] == "GET")
+    {
+        // Render test selection page.
+        render("test_view.php", ["title" => "Tests"]);
+    }
+
+    // else if user reached page via POST (as by submitting a form via POST)
+    else if ($_SERVER["REQUEST_METHOD"] == "POST")
+    {	
+		//Redirect to test page.
+		if(!empty($_POST['test_button']))
+		{
+			redirect($_POST['test_button']);
+		}
+    }
+
 ?>

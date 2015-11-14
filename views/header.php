@@ -32,7 +32,7 @@
 
             <div id="top">
                 <div>
-                    <a href="/"><img alt="StarBoard" src="/img/old_star_logo.png"/></a>
+                    <a href="/"><img alt="StarBoard" src="/img/starboard_logo.png"/></a>
                 </div>
 				<?php if (!empty($_SESSION["id"])): ?>
                     <ul class="nav nav-pills">

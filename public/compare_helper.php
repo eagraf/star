@@ -55,7 +55,7 @@
 		$quotient = $difference/$average;
 		
 		//The quotient has to be sufficiently small in order for true to be returned.
-		if($quotient <= 0.3)
+		if($quotient <= 0.1)
 		{
 			return true;
 		}
