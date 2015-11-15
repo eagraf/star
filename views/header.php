@@ -31,16 +31,24 @@
         <div class="container">
 
             <div id="top">
-                <div>
-                    <a href="/"><img alt="StarBoard" src="/img/starboard_logo.png"/></a>
-                </div>
+        
 				<?php if (!empty($_SESSION["id"])): ?>
-                    <ul class="nav nav-pills">
+					<div id="nav">
+                    <ul class="nav nav-tabs">
+						<a href="/"><img alt="StarBoard" src="/img/small_star_logo.png" align="left"/></a>
                         <li><a href="compare.php">Compare</a></li>
                         <li><a href="board.php">Board</a></li>
                         <li><a href="logout.php">Log Out</a></li>
                     </ul>
-                <?php endif ?>
+					</div>
+                <?php else : ?>
+					<div>
+						<a href="/"><img alt="StarBoard" src="/img/old_star_logo.png" /></a>
+					</div>
+					<hr>
+				<?php endif ?>
             </div>
-			<hr>
+			
             <div id="middle">
+			
+			
