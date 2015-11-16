@@ -28,9 +28,12 @@
         if(!empty($row))
 		{
 			// remember that user's now logged in by storing user's ID in session
+			
             $_SESSION["id"] = $row[0]["id"];
+
 			$_SESSION["group_id"] = $row[0]["group_id"];
 			redirect("home.php");
+
 		}
 	
         

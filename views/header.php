@@ -38,6 +38,7 @@
 						<a href="/"><img alt="StarBoard" src="/img/small_star_logo.png" align="left"/></a>
                         <li><a href="compare.php">Compare</a></li>
                         <li><a href="board.php">Board</a></li>
+						<li><a href="upload.php">Upload</a></li>
                         <li><a href="logout.php">Log Out</a></li>
                     </ul>
 					</div>
