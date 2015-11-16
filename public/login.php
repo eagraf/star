@@ -28,8 +28,10 @@
         if(!empty($row))
 		{
 			// remember that user's now logged in by storing user's ID in session
+			
             $_SESSION["id"] = $row[0]["id"];
-			redirect("home.php");
+			print("HOHOH");
+			redirect("board.php");
 		}
 	
         

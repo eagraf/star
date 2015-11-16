@@ -2,7 +2,7 @@
 	<?php
 		//A list of the test pages, bad practice but it works for now.
 		$tests = [
-			'upload_test' => ['path' => 'tests/upload_test.php', 'name' => 'Upload Test']
+			'upload_test' => ['path' => 'upload_test.php', 'name' => 'Upload Test']
 			];
 		
 		//Print a list of buttons that link to each test page.

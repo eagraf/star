@@ -38,6 +38,7 @@
                     <ul class="nav nav-pills">
                         <li><a href="compare.php">Compare</a></li>
                         <li><a href="board.php">Board</a></li>
+						<li><a href="upload.php">Upload</a></li>
                         <li><a href="logout.php">Log Out</a></li>
                     </ul>
                 <?php endif ?>
