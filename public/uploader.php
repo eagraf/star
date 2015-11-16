@@ -7,7 +7,7 @@
 	 
 	 require_once("config.php");
 	 
-	 $target_base_dir = "../../../../uploads/";
+	 $target_base_dir = "/../uploads/";
 	 
 	 function upload($target_dir, $target_file) {
 		 // Check if file already exists

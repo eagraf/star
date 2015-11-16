@@ -39,6 +39,7 @@
                         <li><a href="compare.php">Compare</a></li>
                         <li><a href="board.php">Board</a></li>
 						<li><a href="upload.php">Upload</a></li>
+						<li><a href="profile.php">Profile</a></li>
                         <li><a href="logout.php">Log Out</a></li>
                     </ul>
 					</div>

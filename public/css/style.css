@@ -58,6 +58,14 @@ form{
 
 }
 
+#middle .profile
+{
+   /* left-align tables' cells */
+   text-align: left;
+   color: #C2F0F0
+
+}
+
 
 #bottom
 {
