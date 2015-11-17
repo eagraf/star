@@ -1,13 +1,10 @@
 <?php
-
     // configuration
     require("../includes/config.php");
-
     // if user reached page via GET (as by clicking a link or via redirect)
     //to do:
 	//make sure that the user enters a thing in all forms
 	//if user email already exists, go it it and update the group id
-
     // else if user reached page via POST (as by submitting a form via POST)
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {	
@@ -29,5 +26,4 @@
 		redirect("login.php");
 		
     }
-
 ?>

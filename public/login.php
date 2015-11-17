@@ -23,20 +23,19 @@
             error("You must provide your password.");
         }
 
-		$row = query("SELECT * FROM users WHERE email = '" . $_POST['username'] . "' AND HASH = '" . $_POST['password'] . "' ;");
+		$row = query("SELECT * FROM users WHERE email = '" . $_POST['username'] . "' AND hash = '" . $_POST['password'] . "' ;");
 
         if(!empty($row))
 		{
 			// remember that user's now logged in by storing user's ID in session
 			
-            $_SESSION["id"] = $row[0]["id"];
+            $_SESSION['id'] = $row[0]['id'];
+			print $_SESSION['id'];
 
 			$_SESSION["group_id"] = $row[0]["group_id"];
-			redirect("home.php");
+			redirect("board.php");
 
 		}
-	
-        
 
         // else apologize
         error("Invalid username and/or password.");
