@@ -11,21 +11,49 @@
     // else if user reached page via POST (as by submitting a form via POST)
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {	
+		//$db = new mysqli('localhost', 'root', '', 'star') or die("unable to connect");
+
 		$i = 0;
 		$nameindex = "name" . "$i";
 		$emailindex = "email" . "$i";
-		$db = new mysqli('localhost', 'root', '', 'star') or die("unable to connect");
+		
+		
 		while(!empty($_POST[$nameindex])){
-			$ayy = $_POST[$nameindex];
+			$i++;
+			$nameindex = "name" . "$i";
+		}
+		$size = $i;
+		
+		$query = "INSERT INTO  groups (name, size, type, description) 
+		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . "Users" . "\",\"" . $_POST['group_desc'] . "\");";
+		$reference = query($query);
 			
-			$query = "INSERT INTO users (name, email, hash, group_id) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . "goat" . "\",\"" . $_POST['group_name'] . "\");";
-			$result = mysqli_query($db, $query);
-			//print $query;
+			
+		
+		$i = 0;
+		$nameindex = "name" . "$i";
+		$emailindex = "email" . "$i";
+		
+		while(!empty($_POST[$nameindex])){
+			$user = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
+			$reference = query($user);
+			if($reference[0]['id'] == null){
+				$result = query("INSERT INTO users (name, email, hash) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . "goat" . "\");");
+				$userref = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
+				$ref = query($userref);
+				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $ref[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");");
+			}else{
+				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $reference[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");");
+			}
+			
+			
 			$i++;
 			$nameindex = "name" . "$i";
 			$emailindex = "email" . "$i";
 		}
-		//print "success?";
+
+		//$query = "UPDATE `groups` SET `size` = " .  . "WHERE `id` = " .  . ";";
+		//$result = mysqli_query($db, $query);
 		redirect("login.php");
 		
     }

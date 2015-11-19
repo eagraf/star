@@ -99,4 +99,24 @@
 		}
 		
     }
+	
+	function QueryWhereGroupId($sql,$group_id){ //need to comment
+		
+		//$oquery = "SELECT user_id FROM group_member WHERE group_id ='" . $group_id . "';";
+		//print $oquery;
+		
+		$results = query("SELECT user_id FROM group_member WHERE group_id ='" . $group_id . "';");
+		$query = $sql . " WHERE id = ";
+		foreach($results as $result){
+			$query .= $result["user_id"];
+			$query .= " or id = ";
+		}
+		$query .= "null;";
+		$final_result = query($query);
+		
+		//print $query;
+		return $final_result;
+	}
+	
+	
 ?>

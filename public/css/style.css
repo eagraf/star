@@ -45,6 +45,7 @@ form{
 {
     display: inline;
 	
+	color: black;
     /* override Bootstrap's 100% width for form controls */
 	width: auto;
 }

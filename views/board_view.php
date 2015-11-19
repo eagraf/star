@@ -9,8 +9,29 @@
         </thead>
 
         <tbody>
-		
+			<form action="change_group.php" method="post">
+				<fieldset>
+					<div class="form-group">
+						<select class="form-control" name="group">
+							<option disabled selected value="">Group</option>
+							<?php
+        
+							foreach ($groups as $group)
+							{
+								print("<option value='{$group["group"]}'>{$group["group"]}</option>");
+							}
+
+							?>
+						</select>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default" type="submit">Change Group</button>
+					</div>
+				</fieldset>
+			<form action="sell.php" method="post">
             <?php
+			
+			
 			$i = 0;
             foreach ($ranks as $rank)
             {

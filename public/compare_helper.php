@@ -13,7 +13,7 @@
     function pick($group_id)
     {
 		//Get all relevant users.
-        $group_users = query("SELECT * FROM users WHERE group_id = '" . $_SESSION["group_id"] . "';");
+        $group_users = query("SELECT * FROM group_member WHERE group_id = '" . $_SESSION['group_id'] . "';");
 		
 		//Size of group.
 		$size = count($group_users);
@@ -47,7 +47,7 @@
 		//Difference/average
 		$difference = abs($user_a['score'] - $user_b['score']);
 		$average = ($user_a['score'] + $user_b['score'])/2;
-		
+
 		if($average == 0)
 		{
 			return true;
