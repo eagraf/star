@@ -7,9 +7,10 @@
 	 
 	 require_once("config.php");
 	 
-	 $target_base_dir = "../../uploads/";
+	 $target_base_dir = "uploads/";
+
 	 
-	 function upload($target_dir, $target_file) {
+	 function upload($target_dir, $target_file, $type) {
 		 // Check if file already exists
 		if (file_exists($target_file)) {
 			error("Sorry, file already exists.");
@@ -22,6 +23,7 @@
 		}
 		 //Moves the uploaded file from temporary to permanent location.
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			query("INSERT INTO media (name, type, address, owner_id) VALUES ('" . $_FILES["fileToUpload"]["name"] . "', '" . $type . "', '" . $target_file . "', '" . $_SESSION['id'] . "');");
 			error("The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.");
 		} 
 		else {
@@ -33,8 +35,9 @@
 		global $target_base_dir;
 		
 		//Create user directory if it doesn't exist.
-		if(!file_exists($target_base_dir . "/" . $_SESSION['id'])) {
-			if(!mkdir($target_base_dir . "/" . $_SESSION['id'])) {
+		if(!file_exists($target_base_dir . $_SESSION['id'])) {
+			if(!mkdir($target_base_dir . $_SESSION['id'])) {
+				//print($target_base_dir . $_SESSION['id']);
 				return false;
 			}
 			return false;
@@ -42,6 +45,7 @@
 		
 		$fileType = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
 		
+		//Choose different upload function depending on file extension.
 		switch($fileType) {
 			case "jpg":
 			case "png":
@@ -55,7 +59,6 @@
 				return uploadAudio();
 				break;
 			case "pdf":
-			case "doc":
 				return uploadDocument();
 				break;
 			default:
@@ -68,7 +71,7 @@
 		global $target_base_dir;
 		
 		//Target directory & file.
-		$target_dir = $target_base_dir . "/" . $_SESSION['id'] . "/images/";
+		$target_dir = $target_base_dir . $_SESSION['id'] . "/images/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		
 		//Create target directory if it doesn't exist.
@@ -88,7 +91,7 @@
 			}
 			else {
 				//Actually upload the file.
-				upload($target_dir, $target_file);
+				upload($target_dir, $target_file, "image");
 				return true;
 			}
 		} 
@@ -102,7 +105,7 @@
 		 global $target_base_dir;
 		 
 		 //Target directory & file.
-		$target_dir = $target_base_dir . "/" . $_SESSION['id'] . "/audio/";
+		$target_dir = $target_base_dir . $_SESSION['id'] . "/audio/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		
 		//Create target directory if it doesn't exist.
@@ -119,7 +122,7 @@
 		}
 		else {
 			//Actually upload the file.
-			upload($target_dir, $target_file);
+			upload($target_dir, $target_file, "audio");
 			return true;
 		}
 	 }
@@ -128,7 +131,7 @@
 		 global $target_base_dir;
 		 
 		 //Target directory & file.
-		$target_dir = $target_base_dir . "/" . $_SESSION['id'] . "/documents/";
+		$target_dir = $target_base_dir . $_SESSION['id'] . "/documents/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		
 		//Create target directory if it doesn't exist.
@@ -140,12 +143,12 @@
 		//Check file types.
 		$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		if($fileType != "doc" && $fileType != "pdf") {
-			error("Sorry, only DOC & PDF files are allowed.");
+			error("Sorry, PDF files are allowed.");
 			return false;
 		}
 		else {
 			//Actually upload the file.
-			upload($target_dir, $target_file);
+			upload($target_dir, $target_file, "document");
 			return true;
 		}
 	 }
