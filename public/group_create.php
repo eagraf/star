@@ -17,9 +17,14 @@
         {
             error("You must specify the size of the group.");
         }
+		if (empty($_POST["group_cat_size"]))
+        {
+            error("You must specify the number of categories for your group.");
+        }
 		
 		$size = $_POST['group_size'];
-		render("group_finalize_form.php", ["title" => "Register", "size" => $size ]);
+		$cat_num = $_POST['group_cat_size'];
+		render("group_finalize_form.php", ["title" => "Register", "size" => $size, "cat_num" => $cat_num ]);
 		
     }
 
