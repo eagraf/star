@@ -24,7 +24,7 @@
 		 //Moves the uploaded file from temporary to permanent location.
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 			query("INSERT INTO media (name, type, address, owner_id) VALUES ('" . $_FILES["fileToUpload"]["name"] . "', '" . $type . "', '" . $target_file . "', '" . $_SESSION['id'] . "');");
-			error("The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.");
+			success("The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.");
 		} 
 		else {
 			error("Sorry, there was an error uploading your file.");

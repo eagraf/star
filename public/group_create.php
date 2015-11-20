@@ -17,6 +17,7 @@
         {
             error("You must specify the size of the group.");
         }
+		
 		$size = $_POST['group_size'];
 		render("group_finalize_form.php", ["title" => "Register", "size" => $size ]);
 		

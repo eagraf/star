@@ -77,6 +77,10 @@
     {
         render("error.php", ["message" => $message]);
     }
+	function success($message)
+    {
+        render("success.php", ["message" => $message]);
+    }
 	
 	/**
      * Query helper function.
