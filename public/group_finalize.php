@@ -22,7 +22,7 @@
 		$size = $i;
 		
 		$query = "INSERT INTO  groups (name, size, type, description) 
-		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . "Users" . "\",\"" . $_POST['group_desc'] . "\");";
+		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
 		$reference = query($query);
 			
 			
