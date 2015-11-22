@@ -7,19 +7,20 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("group_prepare_form.php", ["title" => "Register"]);
+        render("add_prepare_form.php", ["title" => "Register"]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {	
-		if (empty($_POST["group_size"]))
+		if (empty($_POST["add_num"]))
         {
-            error("You must specify the size of the group.");
+            error("You must specify the number of users to add.");
         }
 		
-		$size = $_POST['group_size'];
-		render("group_finalize_form.php", ["title" => "Register", "size" => $size]);
+		$size = $_POST['add_num'];
+
+		render("add_finalize_form.php", ["title" => "Add", "size" => $size]);
 		
     }
 
