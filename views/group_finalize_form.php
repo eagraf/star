@@ -14,16 +14,6 @@
         </div>
 		
 		<div class="form-group">
-            <?php
-				for($i = 0; $i < $cat_num; $i++){
-					$category = "category" . $i;
-					print "<input class=\"form-control\" name=\"$category\" placeholder=\"Category\" type=\"text\"/>";
-					print "<br>";
-				}
-			?>
-        </div>
-		
-		<div class="form-group">
 			<select class="form-control" name="type">
 				<option disabled selected value="">Type</option>
 					<option value='Users'>Users</option>

@@ -1,11 +1,11 @@
-<form action="group_create.php" method="post">
+<form action="add_users.php" method="post">
     <fieldset>
         <div class="form-group">
-            <input class="form-control" name="group_size" placeholder="Group Size" type="text"/>
+            <input class="form-control" name="add_num" placeholder="# of users to add" type="text"/>
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">
-                Create
+                Add
             </button>
         </div>
     </fieldset>
