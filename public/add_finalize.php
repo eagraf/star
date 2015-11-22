@@ -24,15 +24,24 @@
 		$emailindex = "email" . "$i";
 		
 		while(!empty($_POST[$nameindex])){
+			
 			$user = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
 			$reference = query($user);
+			
+			$query = "SELECT * FROM group_member WHERE user_id =" . $reference[0]['id'] . " AND group_id = '" . $_SESSION['group_id'] . "';";
+			//print $query;
+			$check = query($query);
+			
+			//print $check[0]['id'];
+			
+			
 			if($reference[0]['id'] == null){
 				$result = query("INSERT INTO users (name, email, hash) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . "goat" . "\");");
 				$userref = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
 				$ref = query($userref);
 				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $ref[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_SESSION['group_id'] . "\");");
 			}else{
-				if($reference[0]['id'] != $_SESSION['id']){
+				if($reference[0]['id'] != $_SESSION['id'] AND $check[0]['id'] == null){
 					$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $reference[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_SESSION['group_id'] . "\");");
 				}else{
 					$size--;
@@ -46,7 +55,7 @@
 		}
 		
 		$query = "UPDATE groups SET size = size + " . $size . " WHERE name = '" . $_SESSION['group_id'] . "';";
-		print $query;
+		//print $query;
 		$reference = query($query);
 		
 
