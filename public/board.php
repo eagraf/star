@@ -25,6 +25,9 @@
 		];
         
     }
-
-	render("board_view.php", ["ranks" => $ranks, "groups" => $groups, "title" => "Board"]);
+	
+	$group_id = $_SESSION['group_id'];
+	
+	
+	render("board_view.php", ["ranks" => $ranks, "groups" => $groups, "title" => "Board", 'group_id' => $group_id]);
 ?>
