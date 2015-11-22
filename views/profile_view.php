@@ -1,7 +1,6 @@
 <div>
 	<div class = "profile">
 
-	<p><a href="media.php">Media</a></p>
     <?php
 		print "<p><h1>" . $user[0]["name"] . ":</h1></p>";
 		print "<p><h4>In the following groups:</h4></p>";
@@ -13,6 +12,6 @@
 
 		
     ?>
-
+	<p><a href="media.php">My Media</a></p>
 	</div>
 </div>

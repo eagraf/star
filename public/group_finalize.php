@@ -21,11 +21,17 @@
 		}
 		$size = $i;
 		
-		$query = "INSERT INTO  groups (name, size, type, description) 
-		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
-		$reference = query($query);
+		if(!empty($_SESSION['id'])){
+			$size++;
+		}
 			
 			
+		if(!empty($_SESSION['id'])){
+			$user = query("SELECT name FROM `users` WHERE id = \"" . $_SESSION['id'] . "\";");
+			$loggedInName = $user[0]['name'];
+			$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $_SESSION['id'] . "\",\"" . $loggedInName . "\",\"" . $_POST['group_name'] . "\");");
+		}
+		
 		
 		$i = 0;
 		$nameindex = "name" . "$i";
@@ -40,7 +46,11 @@
 				$ref = query($userref);
 				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $ref[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");");
 			}else{
-				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $reference[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");");
+				if($reference[0]['id'] != $_SESSION['id']){
+					$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $reference[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");");
+				}else{
+					$size--;
+				}
 			}
 			
 			
@@ -48,10 +58,20 @@
 			$nameindex = "name" . "$i";
 			$emailindex = "email" . "$i";
 		}
+		
+		$query = "INSERT INTO  groups (name, size, type, description) 
+		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
+		$reference = query($query);
 
 		//$query = "UPDATE `groups` SET `size` = " .  . "WHERE `id` = " .  . ";";
 		//$result = mysqli_query($db, $query);
-		redirect("login.php");
+		if(empty($_SESSION['id'])){
+			redirect("login.php");
+		}else{
+			$_SESSION['group_id'] = $_POST['group_name'];
+			redirect("board.php");
+		}
+		
 		
     }
 ?>
