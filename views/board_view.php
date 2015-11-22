@@ -56,4 +56,7 @@
 	<div class="profile">
 		<a href="add_users.php" class="btn btn-default" role="button">+ Add</a>
 	</div>
+	<div>
+		<a href="leave.php" class="btn btn-default" role="button">Leave Group</a>
+	</div>
 </div>
