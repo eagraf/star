@@ -21,16 +21,7 @@
         <!-- http://getbootstrap.com/ -->
         <script src="/js/bootstrap.min.js"></script>
 		
-		<?php
-			//Scripts to include in the file.
-			if(isset($scripts))
-			{
-				foreach($scripts as $script)
-				{
-					print("<script src=\"" . $script . "\"></script>");
-				}
-			}
-		?>
+		<script src="/js/compare.js"></script>
 
 
     </head>
@@ -40,26 +31,39 @@
         <div class="container">
 
             <div id="top">
-        
-				<?php if (!empty($_SESSION["id"])): ?>
-					<div id="nav">
-                    <ul class="nav nav-tabs">
+				<div id="nav">
+					<ul class="nav nav-tabs">
 						<a href="/"><img alt="StarBoard" src="/img/small_star_logo.png" align="left"/></a>
-                        <li><a href="compare.html">Compare</a></li>
-                        <li><a href="board.php">Board</a></li>
+						<li><a href="compare.html">Compare</a></li>
+						<li><a href="board.php">Board</a></li>
 						<li><a href="upload.php">Upload</a></li>
 						<li><a href="profile.php">Profile</a></li>
-                        <li><a href="logout.php">Log Out</a></li>
-                    </ul>
-					</div>
-                <?php else : ?>
-					<div>
-						<a href="/"><img alt="StarBoard" src="/img/old_star_logo.png" /></a>
-					</div>
-					<hr>
-				<?php endif ?>
+						<li><a href="logout.php">Log Out</a></li>
+					</ul>
+				</div>
             </div>
 			
             <div id="middle">
-			
-			
+				<div class="form-group">
+					<button class="btn btn-default" onclick="compare(1);">
+						<h1 id="view_a">A</h1>
+					</button>
+					
+					<button class="btn btn-default" onclick="compare(2);">
+						<h1 id="view_b">B</h1>
+					</button>
+				</div>
+				<div>
+					<button class="btn btn-default" onclick="compare(0);" >
+						<h2>Skip</h2>
+					</button>
+				</div>
+		<div id="bottom">
+			Copyright <a href="about.php">RYEE</a> 2015
+		</div>
+
+	</div>
+
+	</body>
+	
+</html>
