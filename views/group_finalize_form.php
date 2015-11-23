@@ -24,6 +24,17 @@
 		</div>
 		
 		<div class="form-group">
+			<?php
+				for($i = 0; $i < $cat_num; $i++){
+					$category = "category" . $i;
+					print "<input class=\"form-control\" name=\"$category\" placeholder=\"Category\" type=\"text\"/>";
+					print "<br>";
+				}
+			?>
+        </div>
+		
+		
+		<div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="group_name" placeholder="Group Name" type="text" required />
         </div>
 		

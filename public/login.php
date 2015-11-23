@@ -23,17 +23,20 @@
             error("You must provide your password.");
         }
 
-		$row = query("SELECT * FROM users WHERE email = '" . $_POST['username'] . "' AND hash = '" . $_POST['password'] . "' ;");
+		$row = query("SELECT * FROM users WHERE email = '" . $_POST['username'] . "' ;");
 
         if(!empty($row))
 		{
 			// remember that user's now logged in by storing user's ID in session
-			
+			if (password_verify($_POST["password"], $row[0]["hash"]))
+            {
+                $_SESSION["id"] = $row[0]["id"];
+				$_SESSION["group_id"] = null;
 
-            $_SESSION["id"] = $row[0]["id"];
-			$_SESSION["group_id"] = null;
+				redirect("home.php");
+            }
 
-			redirect("home.php");
+            
 
 		}
 
