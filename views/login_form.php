@@ -1,3 +1,8 @@
+<div>
+<h1> Improvement Through Competition </h1> 
+<br>
+</div>
+
 <form action="login.php" method="post">
     <fieldset>
         <div class="form-group">
@@ -14,5 +19,5 @@
     </fieldset>
 </form>
 <div>
-    or <a href="group_create.php">register</a> for an account
+    or <a href="register.php">register</a> for an account
 </div>
