@@ -36,6 +36,7 @@ function setComparees(comparer) {
 		//Set the text of the button to the comparees name.
 		$("#view_a").text(comparees.user_a.name);
 		$("#view_b").text(comparees.user_b.name);
+		$("#view_c").text("On " + comparees.category.category + ":");
 		
 		$("#view_a").val(comparees.user_a.user_id);
 		$("#view_b").val(comparees.user_b.user_id);
