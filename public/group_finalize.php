@@ -59,6 +59,26 @@
 		}
 		
 		
+		
+		
+		
+		$i = 0;
+		$categoryindex = "category" . "$i";
+		
+		while(!empty($_POST[$categoryindex])){
+			$cate = "SELECT id FROM `categories` WHERE category = \"" . $_POST[$categoryindex] . "\" AND group_id = '" . $_POST['group_name'] . "' ;";
+			$reference = query($cate);
+			if($reference[0]['id'] == null){
+				$result = query("INSERT INTO categories (category, group_id) VALUES (\"" . $_POST[$categoryindex] . "\",\"" . $_POST['group_name'] . "\");");
+			}
+			
+			$i++;
+			$categoryindex = "category" . "$i";
+		}
+		
+
+		
+		
 		$query = "INSERT INTO  groups (name, size, type, description) 
 		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
 		$reference = query($query);
