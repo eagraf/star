@@ -16,7 +16,11 @@
         <!-- http://getbootstrap.com/ -->
         <script src="/js/bootstrap.min.js"></script>
 		
-		<script src="/js/compare.js"></script>
+		<script src="/js/media.js"></script>
+		
+		<script>
+			displayInsertTable();
+		</script>
 
 
     </head>
@@ -39,27 +43,12 @@
             </div>
 			
             <div id="middle">
-				<div class="form-group">
-					<button class="btn btn-default" onclick="compare(1);">
-						<h1 id="view_a"></h1>
-					</button>
-					
-					<button class="btn btn-default" onclick="compare(2);">
-						<h1 id="view_b"></h1>
-					</button>
-				</div>
-				<div>
-					<button class="btn btn-default" onclick="compare(0);" >
-						<h2>Skip</h2>
-					</button>
-				</div>
-			</div>
-			
-			<div id="bottom">
-				Copyright <a href="about.php">RYEE</a> 2015
-			</div>
-
+				<div id="media_table"></div>
+		<div id="bottom">
+			Copyright <a href="about.php">RYEE</a> 2015
 		</div>
+
+	</div>
 
 	</body>
 	
