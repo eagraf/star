@@ -1,10 +1,15 @@
+<div>
+<h1> Improvement Through Competition </h1> 
+<br>
+</div>
+
 <form action="login.php" method="post">
     <fieldset>
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required />
         </div>
         <div class="form-group">
-            <input class="form-control" name="password" placeholder="Password" type="password"/>
+            <input class="form-control" name="password" placeholder="Password" type="password" required />
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">
@@ -14,5 +19,5 @@
     </fieldset>
 </form>
 <div>
-    or <a href="group_create.php">register</a> for an account
+    or <a href="register.php">register</a> for an account
 </div>

@@ -9,7 +9,7 @@
 	//redirect("test.php");
 	
 	if(empty($_SESSION['id']))
-		render("index_view.php", []);
+		redirect("/login.php");
 	else
 		redirect("/home.php");
 	

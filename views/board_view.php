@@ -13,9 +13,9 @@
 				<fieldset>
 					<div class="form-group">
 						<select class="form-control" name="group">
-							<option disabled selected value="">Group</option>
 							<?php
-        
+							print("<option disabled selected value=\"\">{$group_id}</option>");
+							
 							foreach ($groups as $group)
 							{
 								print("<option value='{$group["group"]}'>{$group["group"]}</option>");

@@ -34,11 +34,35 @@ function setComparees(comparer) {
 		}
 
 		//Set the text of the button to the comparees name.
-		$("#view_a").text(comparees.user_a.name);
-		$("#view_b").text(comparees.user_b.name);
+		$("#view_a").text(comparees.object_a.name);
+		$("#view_b").text(comparees.object_b.name);
+		$("#view_c").text("On " + comparees.category.category + ":");
 		
-		$("#view_a").val(comparees.user_a.user_id);
-		$("#view_b").val(comparees.user_b.user_id);
+		$("#view_a").val(comparees.object_a.owner_id);
+		$("#view_b").val(comparees.object_b.owner_id);
+		
+		switch(comparees.object_a.type) {
+			case "image":
+				displayImage(comparees.object_a.address, "media_a");
+				break;
+			case "audio":
+				displayAudio(comparees.object_a.address, "media_a");
+				break;
+			case "document":
+				displayDocument(comparees.object_a.address, "media_a");
+				break;
+		}
+		switch(comparees.object_b.type) {
+			case "image":
+				displayImage(comparees.object_b.address, "media_b");
+				break;
+			case "audio":
+				displayAudio(comparees.object_b.address, "media_b");
+				break;
+			case "document":
+				displayDocument(comparees.object_b.address, "media_b");
+				break;
+		}
 	})
 	.fail(function(d, textStatus, error) {
 		 console.log(d);
@@ -54,12 +78,12 @@ function compare(result) {
 			setComparees(1);
 			return;
 		case 1:
-			var winner_id = comparees.user_a.user_id;
-			var loser_id = comparees.user_b.user_id;
+			var winner_id = comparees.object_a.owner_id;
+			var loser_id = comparees.object_b.owner_id;
 			break;
 		case 2:
-			var winner_id = comparees.user_b.user_id;
-			var loser_id = comparees.user_a.user_id;
+			var winner_id = comparees.object_b.user_id;
+			var loser_id = comparees.object_a.user_id;
 			break;
 		default:
 			setComparees(1);

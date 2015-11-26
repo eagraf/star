@@ -12,6 +12,10 @@
 
 		
     ?>
-	<p><a href="media.php">My Media</a></p>
+	<p><a href="media.html">My Media</a></p>
+	
+	<h3><p><a href="change_pass.php">Change Password</a></p></h3>
 	</div>
+	
+	
 </div>

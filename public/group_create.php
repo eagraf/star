@@ -19,7 +19,9 @@
         }
 		
 		$size = $_POST['group_size'];
-		render("group_finalize_form.php", ["title" => "Register", "size" => $size]);
+		$cat_num = $_POST['cat_num'];
+		
+		render("group_finalize_form.php", ["title" => "Register", "size" => $size, "cat_num" => $cat_num]);
 		
     }
 

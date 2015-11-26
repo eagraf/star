@@ -16,9 +16,11 @@
         <!-- http://getbootstrap.com/ -->
         <script src="/js/bootstrap.min.js"></script>
 		
-		<script src="/js/compare.js"></script>
-		
 		<script src="/js/media.js"></script>
+		
+		<script>
+			displayInsertTable("middle");
+		</script>
 
 
     </head>
@@ -40,32 +42,7 @@
 				</div>
             </div>
 			
-            <div id="middle">
-				<h2 id="view_c">C</h2>
-				<span>
-					<span id="objecta">
-						<div id="media_a"></div>
-						<button class="btn btn-default" onclick="compare(1);" width="150px">
-							<h1 id="view_a"></h1>
-						</button>
-					</span>
-					
-					<span id="objectb">
-						<div id="media_b"></div>
-						<button class="btn btn-default" onclick="compare(2);" width="150px">
-							<h1 id="view_b"></h1>
-						</button>
-					</span>
-				</span>
-				<div id="skip">
-					<button class="btn btn-default" onclick="compare(0);" >
-						<h2>Skip</h2>
-					</button>
-				</div>
-				
-				
-			
-			</div>
+            <div id="middle"></div>
 			
 			<div id="bottom">
 				Copyright <a href="about.php">RYEE</a> 2015

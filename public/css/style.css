@@ -85,3 +85,21 @@ form{
 {
 	display: inline; 
 }
+
+#objecta
+{
+	color: #C2F0F0;
+	float: left;
+}
+
+#objectb
+{
+	color: #C2F0F0;
+	float: right;
+}
+
+#skip
+{
+	margin-left: auto;
+    margin-right: auto;
+}

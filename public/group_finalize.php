@@ -41,7 +41,7 @@
 			$user = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
 			$reference = query($user);
 			if($reference[0]['id'] == null){
-				$result = query("INSERT INTO users (name, email, hash) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . "goat" . "\");");
+				$result = query("INSERT INTO users (name, email, hash) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . password_hash("goat",  PASSWORD_DEFAULT) . "\");");
 				$userref = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
 				$ref = query($userref);
 				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $ref[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_POST['group_name'] . "\");");
@@ -53,18 +53,37 @@
 				}
 			}
 			
-			
 			$i++;
 			$nameindex = "name" . "$i";
 			$emailindex = "email" . "$i";
 		}
 		
+		
+		
+		
+		
+		$i = 0;
+		$categoryindex = "category" . "$i";
+		
+		while(!empty($_POST[$categoryindex])){
+			$cate = "SELECT id FROM `categories` WHERE category = \"" . $_POST[$categoryindex] . "\" AND group_id = '" . $_POST['group_name'] . "' ;";
+			$reference = query($cate);
+			if($reference[0]['id'] == null){
+				$result = query("INSERT INTO categories (category, group_id) VALUES (\"" . $_POST[$categoryindex] . "\",\"" . $_POST['group_name'] . "\");");
+			}
+			
+			$i++;
+			$categoryindex = "category" . "$i";
+		}
+		
+
+		
+		
 		$query = "INSERT INTO  groups (name, size, type, description) 
 		VALUES (\"" . $_POST['group_name'] . "\",\"" . $size . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
 		$reference = query($query);
 
-		//$query = "UPDATE `groups` SET `size` = " .  . "WHERE `id` = " .  . ";";
-		//$result = mysqli_query($db, $query);
+		
 		if(empty($_SESSION['id'])){
 			redirect("login.php");
 		}else{
