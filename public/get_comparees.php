@@ -8,6 +8,9 @@
 	//Get all relevant categories
 	$group_categories = query("SELECT * FROM categories WHERE group_id = '" . $_SESSION['group_id'] . "';");
 	
+	//Get all relevant categories
+	$group_categories = query("SELECT * FROM categories WHERE group_id = '" . $_SESSION['group_id'] . "';");
+	
 	//Size of group.
 	$size = count($group_object);
 	$key_a = 0;

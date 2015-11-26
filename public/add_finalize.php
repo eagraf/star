@@ -36,10 +36,16 @@
 			
 			
 			if($reference[0]['id'] == null){
-				$result = query("INSERT INTO users (name, email, hash) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . "goat" . "\");");
+				$rand_str = password_hash("sg39d9dhj9n2",  PASSWORD_DEFAULT);
+				$rand_str = substr($rand_str, -10);
+				
+				$result = query("INSERT INTO users (name, email, hash) VALUES (\"" . $_POST[$nameindex] . "\",\"" . $_POST[$emailindex] . "\",\"" . password_hash($rand_str,  PASSWORD_DEFAULT) . "\");");
+				
 				$userref = "SELECT id FROM `users` WHERE email = \"" . $_POST[$emailindex] . "\";";
 				$ref = query($userref);
 				$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $ref[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_SESSION['group_id'] . "\");");
+				
+				mail($_POST[$emailindex], "You've been invited to a StarBoard group!", "To check out the group: " . $_SESSION['group_id']  . ", You can log in with your email and the password: " . $rand_str);
 			}else{
 				if($reference[0]['id'] != $_SESSION['id'] AND $check[0]['id'] == null){
 					$result = query("INSERT INTO group_member (user_id, name, group_id) VALUES (\"" . $reference[0]['id'] . "\",\"" . $_POST[$nameindex] . "\",\"" . $_SESSION['group_id'] . "\");");
