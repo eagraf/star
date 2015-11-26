@@ -98,6 +98,23 @@ form{
 	float: right;
 }
 
+#media_a img
+{
+	height:350px;
+	width:auto;
+	max-width:600px;
+}
+
+#media_b img
+{
+	height:350px;
+	width:auto;
+	max-width:600px;
+}
+
+
+
+
 #skip
 {
 	margin-left: auto;
