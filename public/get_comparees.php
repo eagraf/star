@@ -33,7 +33,7 @@
 			$key_b = array_rand($group_object);
 		}
 		//Make sure different users are chosen.
-		while($key_b == $key_a);
+		while($key_b == $key_a AND $group_object[$key_a]["object_id"] == $group_object[$key_b]["object_id"] AND $group_object[$key_a]["owner_id"] == $group_object[$key_b]["owner_id"]);
 	}
 	
 	if($group_type[0]['type'] != "Users"){
