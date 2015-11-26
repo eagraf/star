@@ -16,6 +16,7 @@
 							<?php
 							print("<option disabled selected value=\"\">{$group_id}</option>");
 							
+							
 							foreach ($groups as $group)
 							{
 								print("<option value='{$group["group"]}'>{$group["group"]}</option>");
