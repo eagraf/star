@@ -5,7 +5,7 @@
 	//Get all relevant users.
 	$group_type = query("SELECT type FROM groups WHERE name = '". $_SESSION['group_id'] . "';");
 	if($group_type[0]['type'] != "Users"){
-		$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "';");
+		$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . "0" . "';");
 	}else{
 		$group_object = query("SELECT * FROM group_member WHERE group_id = '" . $_SESSION['group_id'] . "';");
 	}
@@ -40,8 +40,29 @@
 		$user_a = query("SELECT * FROM users WHERE id='" . $group_object[$key_a]["owner_id"] . "';")[0];
 		$user_b = query("SELECT * FROM users WHERE id='" . $group_object[$key_b]["owner_id"] . "';")[0];
 	
-		$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "' AND type = " . $group_type[0]['type'] . ";")[0];
-		$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "' AND type = " . $group_type[0]['type'] . ";")[0];
+		//$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "';")[0];
+		//$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "';")[0];
+		//$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "' AND type = " . "image" . ";")[0];
+		//$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "' AND type = " . "image" . ";")[0];
+		switch($group_type[0]['type']){
+			case "Images":
+				$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "' AND type = " . "'image'" . ";")[0];
+				$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "' AND type = " . "'image'" . ";")[0];
+				break;
+			case "Audio":
+				$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "' AND type = " . "audio" . ";")[0];
+				$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "' AND type = " . "audio" . ";")[0];
+				break;
+			case "Documents":
+				$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "' AND type = " . "document" . ";")[0];
+				$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "' AND type = " . "document" . ";")[0];
+				break;
+			default:
+				$media_a = query("SELECT * FROM media WHERE id='" . $group_object[$key_a]["object_id"] . "' AND type = " . "image" . ";")[0];
+				$media_b = query("SELECT * FROM media WHERE id='" . $group_object[$key_b]["object_id"] . "' AND type = " . "image" . ";")[0];
+				break;
+		}
+		
 	
 		$object_a = $group_object[$key_a];
 		$object_b = $group_object[$key_b];
