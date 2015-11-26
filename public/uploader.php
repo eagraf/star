@@ -17,7 +17,7 @@
 			$uploadOk = 0;
 		}
 		// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
+		if ($_FILES["fileToUpload"]["size"] > 50000000) {
 			error("Sorry, your file is too large.");
 			$uploadOk = 0;
 		}
@@ -116,7 +116,7 @@
 		}
 		//Check file types.
 		$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		if($fileType != "mp3" && $fileType != "wav" && $fileType != ".ogg" ) {
+		if($fileType != "mp3" && $fileType != "wav" && $fileType != ".m4a" ) {
 			error("Sorry, only MP3, WAG, & OGG files are allowed.");
 			return false;
 		}

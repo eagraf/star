@@ -11,7 +11,7 @@
 	if(empty($_SESSION['id']))
 		redirect("/login.php");
 	else
-		redirect("/home.php");
+		redirect("/board.php");
 	
 	
 	

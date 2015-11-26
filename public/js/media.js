@@ -103,7 +103,7 @@
                 content+="<td>" + data.audio[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'middle')\\>";
+				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'middle')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
