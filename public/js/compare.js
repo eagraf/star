@@ -78,12 +78,12 @@ function compare(result) {
 			setComparees(1);
 			return;
 		case 1:
-			var winner_id = comparees.object_a.owner_id;
-			var loser_id = comparees.object_b.owner_id;
+			var winner_id = comparees.object_a.id;
+			var loser_id = comparees.object_b.id;
 			break;
 		case 2:
-			var winner_id = comparees.object_b.user_id;
-			var loser_id = comparees.object_a.user_id;
+			var winner_id = comparees.object_b.id;
+			var loser_id = comparees.object_a.id;
 			break;
 		default:
 			setComparees(1);
