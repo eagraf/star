@@ -20,14 +20,16 @@
 	$groups = [];
 	foreach ($names as $name)
     {
+		$group_name = query("SELECT name FROM groups WHERE id =" . $name["group_id"] .";");
 		$groups[] = [
-			"group" => $name["group_id"],
+			"group" => $group_name[0]['name'],
+			"group_id" => $name["group_id"]
 		];
         
     }
 	
-	$group_id = $_SESSION['group_id'];
-	
+	$group_name = query("SELECT name FROM groups WHERE id =" . $_SESSION['group_id'] .";");
+	$group_id = $group_name[0]['name'];
 	
 	render("board_view.php", ["ranks" => $ranks, "groups" => $groups, "title" => "Board", 'group_id' => $group_id]);
 ?>

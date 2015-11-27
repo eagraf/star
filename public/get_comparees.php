@@ -3,7 +3,7 @@
     require("../includes/config.php"); 
 	
 	//Get all relevant users.
-	$group_type = query("SELECT type FROM groups WHERE name = '". $_SESSION['group_id'] . "';");
+	$group_type = query("SELECT type FROM groups WHERE id = '". $_SESSION['group_id'] . "';");
 	if($group_type[0]['type'] != "Users"){
 		$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . "0" . "';");
 	}else{
@@ -28,12 +28,23 @@
 		$key_a = array_rand($group_object);
 		$key_c = array_rand($group_categories);
 		
-		do
-		{
+		
+		if($group_type[0]['type'] != "Users"){
+			do
+			{
 			$key_b = array_rand($group_object);
+			}
+			//Make sure different images and users are chosen.
+			while($key_b == $key_a AND $group_object[$key_a]["object_id"] == $group_object[$key_b]["object_id"] AND $group_object[$key_a]["owner_id"] == $group_object[$key_b]["owner_id"]);
+		}else{
+			do
+			{
+			$key_b = array_rand($group_object);
+			}
+			//Make sure different users are chosen.
+			while($key_b == $key_a);
 		}
-		//Make sure different users are chosen.
-		while($key_b == $key_a AND $group_object[$key_a]["object_id"] == $group_object[$key_b]["object_id"] AND $group_object[$key_a]["owner_id"] == $group_object[$key_b]["owner_id"]);
+		
 	}
 	
 	if($group_type[0]['type'] != "Users"){
