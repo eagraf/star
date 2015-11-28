@@ -22,7 +22,7 @@
     {
 		$group_name = query("SELECT name FROM groups WHERE id =" . $name["group_id"] .";");
 		$groups[] = [
-			"group" => $group_name[0]['name'],
+			"group" => $group_name[0]["name"],
 			"group_id" => $name["group_id"]
 		];
         

@@ -5,7 +5,7 @@
 	//Get all relevant users.
 	$group_type = query("SELECT type FROM groups WHERE id = '". $_SESSION['group_id'] . "';");
 	if($group_type[0]['type'] != "Users"){
-		$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . "0" . "';");
+		$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "';");
 	}else{
 		$group_object = query("SELECT * FROM group_member WHERE group_id = '" . $_SESSION['group_id'] . "';");
 	}
