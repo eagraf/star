@@ -18,7 +18,7 @@
 
 							foreach ($groups as $group)
 							{
-								print("<option value='{$group["group"]}'>{$group["group"]}</option>");
+								print("<option value='{$group["group_id"]}'>{$group["group"]}</option>");
 							}
 
 							?>

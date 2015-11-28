@@ -89,14 +89,31 @@ form{
 #objecta
 {
 	color: #C2F0F0;
-	float: left;
+	display: inline-block; 
 }
 
 #objectb
 {
 	color: #C2F0F0;
-	float: right;
+	display: inline-block; 
 }
+
+#media_a img
+{
+	height:350px;
+	width:auto;
+	max-width:600px;
+}
+
+#media_b img
+{
+	height:350px;
+	width:auto;
+	max-width:600px;
+}
+
+
+
 
 #skip
 {

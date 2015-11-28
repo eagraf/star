@@ -6,8 +6,9 @@
 	$groups = [];
 	foreach ($names as $name)
     {
+		$group_name = query("SELECT name FROM groups WHERE id =" . $name["group_id"] .";");
 		$groups[] = [
-			"group" => $name["group_id"],
+			"group" => $group_name[0]['name'],
 		];
         
     }
