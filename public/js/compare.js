@@ -4,7 +4,9 @@
  * Ethan Graf 11/19/2015
  */
  
+ //Global variables.
 var group = {};
+var current ={};
 var objectQueue;
 
 /**
@@ -13,6 +15,8 @@ var objectQueue;
 window.onload = function() {
 	
 	var parameters = {};
+	
+	//Get basic group information necesarry for showing the compare page.
 	$.getJSON("get_group.php", parameters)
 		.done(function(data, textStatus, jqXHR) {
 	
@@ -35,51 +39,36 @@ window.onload = function() {
 * Reset the comparees displayed in compare.
 */
 function setComparees() {
-	
-	if(objectQueue.length < 3) {
+	//Reset the objectQueue if there are less than two remaining.
+	if(objectQueue.length < 2) {
 		reset();
 	}
 	console.log(objectQueue);
 	
+	//Randomly retrieve objects from the object queue to be compared.
 	var objectA = getComparee();
 	var objectB = getComparee();
 	
+	//Randomly get category.
 	var category = getCategory();
 	
+	//Update global variable current, so that it can be referenced in compare().
+	current.objectA = objectA;
+	current.objectB = objectB;
+	current.category = category;
+	
 	//Set the text of the button to the comparees name.
-		$("#view_a").text(objectA.name);
-		$("#view_b").text(objectB.name);
-		$("#view_c").text("On " + category + ":");
-		
-		$("#view_a").val(objectA.owner_id);
-		$("#view_b").val(objectB.owner_id);
-		
-		switch(objectA.type) {
-			case "image":
-				displayImage(objectA.address, "media_a");
-				break;
-			case "audio":
-				displayAudio(objectA.address, "media_a");
-				break;
-			case "document":
-				displayDocument(objectA.address, "media_a");
-				break;
-		}
-		switch(objectB.type) {
-			case "image":
-				displayImage(objectB.address, "media_b");
-				break;
-			case "audio":
-				displayAudio(objectB.address, "media_b");
-				break;
-			case "document":
-				displayDocument(objectB.address, "media_b");
-				break;
-		}
+	$("#view_a").text(objectA.name);
+	$("#view_b").text(objectB.name);
+	$("#view_c").text("On " + category + ":");
+	
+	//Display the different types of media.
+	displayMedia(objectA, "media_a");
+	displayMedia(objectB, "media_b");
 }
 
 function getComparee() {
-	var randIndex = Math.floor(Math.random() * (objectQueue.length + 1));
+	var randIndex = Math.floor(Math.random() * (objectQueue.length));
 	var comparee = objectQueue[randIndex];
 	
 	objectQueue.splice(randIndex, 1);
@@ -88,7 +77,7 @@ function getComparee() {
 }
 
 function getCategory() {
-	var randIndex = Math.floor(Math.random() * (group.categories.length + 1));
+	var randIndex = Math.floor(Math.random() * (group.categories.length));
 	
 	return group.categories[randIndex].category;
 }
@@ -100,12 +89,12 @@ function compare(result) {
 			setComparees(1);
 			return;
 		case 1:
-			var winner_id = objectA.id;
-			var loser_id = objectB.id;
+			var winner_id = current.objectA.id;
+			var loser_id = current.objectB.id;
 			break;
 		case 2:
-			var winner_id = objectB.id;
-			var loser_id = objectA.id;
+			var winner_id = current.objectB.id;
+			var loser_id = current.objectA.id;
 			break;
 		default:
 			setComparees(1);
@@ -113,7 +102,7 @@ function compare(result) {
 	}
 	
 	var parameters = {
-		"comparees": comparees,
+		"comparees": current,
 		"winner_id": winner_id,
 		"loser_id": loser_id
 	};
@@ -135,6 +124,23 @@ function compare(result) {
   * Reset the list of objects to be compared.
   */
  function reset() {
-	 objectQueue = group.objects;
-	 console.log(objectQueue);
+	 objectQueue = group.objects.slice();
+	 console.log("AYY LMAO: " + objectQueue);
  }
+ 
+ /**
+  * Small helper function that displays media based on type.
+  */
+  function displayMedia(object, dest) {
+	  switch(object.type) {
+		case "image":
+			displayImage(object.address, dest);
+			break;
+		case "audio":
+			displayAudio(object.address, dest);
+			break;
+		case "document":
+			displayDocument(object.address, dest);
+			break;
+	}
+  }
