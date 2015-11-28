@@ -36,6 +36,29 @@ window.onload = function() {
 };
 
 /**
+* Called when a key is pressed,
+* Checks if key was left or right arrow,
+* and calls compare (1) or (2) depending
+*/
+window.onkeydown = function() {
+	
+	//get keycode of key pressed
+	var code = event.keyCode;
+	
+	//determine action off keycode
+	switch(code){
+		//left arrow
+		case 37:
+			compare(1);
+			break;
+		//right arrow
+		case 39:
+			compare(2);
+			break;
+	}
+}
+
+/**
 * Reset the comparees displayed in compare.
 */
 function setComparees() {
