@@ -6,7 +6,7 @@
 <form action="login.php" method="post">
     <fieldset>
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required />
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Email" type="text" required />
         </div>
         <div class="form-group">
             <input class="form-control" name="password" placeholder="Password" type="password" required />

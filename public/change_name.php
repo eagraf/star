@@ -7,25 +7,22 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("change_pass_form.php", ["title" => "Change Pass"]);
+        render("change_name_form.php", ["title" => "Change Name"]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         
-        //check if passwords match
-        if($_POST["password"] != $_POST["confirmation"]){
-            error("Passwords must match.");
-        }
 		
 		//try to insert user into array
-		
-        $res = "UPDATE `users` SET `hash` = '" . password_hash($_POST['password'], PASSWORD_DEFAULT) . "' WHERE `id` = '" . $_SESSION['id'] . "'";
+		$res = "UPDATE `users` SET name = '" . $_POST['name'] . "' WHERE `id` = '" . $_SESSION['id'] . "'";
+        $res2 = "UPDATE group_member SET name = '" . $_POST['name'] . "' WHERE `user_id` = '" . $_SESSION['id'] . "'";
 		//print $res;
 		$result = query($res);
+		$result = query($res2);
         
-		success("Password successfully changed!");
+		success("Name successfully changed!");
         
     }
 

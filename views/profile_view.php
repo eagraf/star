@@ -15,6 +15,7 @@
 	<p><a href="media.html">My Media</a></p>
 	
 	<h3><p><a href="change_pass.php">Change Password</a></p></h3>
+	<h3><p><a href="change_name.php">Change Name</a></p></h3>
 	</div>
 	
 	
