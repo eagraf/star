@@ -6,6 +6,7 @@
 	$group_type = query("SELECT type FROM groups WHERE id = '". $_SESSION['group_id'] . "';");
 	//Get all relevant users
 	if($group_type[0]['type'] != "Users"){
+		//determine which media to get off group type
 		switch($group_type[0]['type']){
 			case "Images":
 				$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "' AND type = 'image';");
