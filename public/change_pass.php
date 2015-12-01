@@ -19,10 +19,9 @@
             error("Passwords must match.");
         }
 		
-		//try to insert user into array
+		//change user's password, salt it accordingly
 		
         $res = "UPDATE `users` SET `hash` = '" . password_hash($_POST['password'], PASSWORD_DEFAULT) . "' WHERE `id` = '" . $_SESSION['id'] . "'";
-		//print $res;
 		$result = query($res);
         
 		success("Password successfully changed!");

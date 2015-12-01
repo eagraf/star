@@ -1,4 +1,6 @@
 <?php
+	//this'll all be rewritten, so whatev
+	
 	require("../includes/config.php");
 	$result = query("UPDATE `group_member` SET score = (score / comp_num) * 20 WHERE group_id = ". $_SESSION['group_id'] ." and user_id = " . $_SESSION["id"] . ";");
 	$rows = query("Select name, score, comp_num FROM group_member WHERE `group_id` = \"" . $_SESSION['group_id'] . "\" ORDER BY `group_member`.`score` DESC");

@@ -9,6 +9,7 @@
         exit;
     }*/
 	
+	//increment the score of the winning user
 	query("UPDATE compare_object_group SET comp_num = comp_num+1, score = score+1 WHERE id='" . $_GET["winner_id"] . "';");
 	query("UPDATE compare_object_group SET comp_num = comp_num+1 WHERE id='" . $_GET["loser_id"] . "';");
 ?>

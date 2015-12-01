@@ -13,6 +13,7 @@
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {	
+		//ensure the user entered an appropriate group size
 		if (empty($_POST["group_size"]))
         {
             error("You must specify the size of the group.");
