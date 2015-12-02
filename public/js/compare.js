@@ -6,7 +6,8 @@
  
  //Global variables.
 var group = {};
-var current ={};
+var current = {};
+var comparisons = [];
 var objectQueue;
 
 /**
@@ -28,11 +29,36 @@ window.onload = function() {
 			setComparees();
 	})
 	.fail(function(d, textStatus, error) {
-		 console.log(d);
+		 
 		 // log error to browser's console
 		 console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+		 return "getJSON failed, status: " + textStatus + ", error: "+error;
 	});
 	
+};
+
+window.onbeforeunload = function() {
+	parameters = {"comparisons": comparisons, "categories": group.categories};
+	
+	$.ajax({
+		type: 'POST',
+		async: false,
+		url: 'compare_result.php',
+		data: parameters
+	}).done(function(data, textStatus, jqXHR) {
+	
+			//Set global variable to JSON retrieved.
+			console.log(data);
+	}).fail(function(d, textStatus, error) {
+
+		 // log error to browser's console
+		 console.log(d);
+		 console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+		 return "getJSON failed, status: " + textStatus + ", error: "+error;
+	 }).always(function() {
+		console.log("complete");
+	 });
+		
 };
 
 /**
@@ -79,27 +105,52 @@ function getComparee() {
 function getCategory() {
 	var randIndex = Math.floor(Math.random() * (group.categories.length));
 	
-	return group.categories[randIndex].category;
+	var category = group.categories[randIndex];
+	current.category_id = category.id;
+	return category.category;
 }
 
 function compare(result) {
 	
+	var comparison = {};
+	comparison.category = current.category;
+	comparison.category_id = current.category_id;
+	
 	switch(result){
 		case 0:
-			setComparees(1);
-			return;
+			setComparees();
+			
+			var winner_id = current.objectA.id;
+			var loser_id = current.objectB.id;
+			
+			comparison.winner = current.objectA;
+			comparison.loser = current.objectB;
+			comparison.tie = true;
+		
+			break;
 		case 1:
 			var winner_id = current.objectA.id;
 			var loser_id = current.objectB.id;
+			
+			comparison.winner = current.objectA;
+			comparison.loser = current.objectB;
+			comparison.tie = false;
 			break;
 		case 2:
 			var winner_id = current.objectB.id;
 			var loser_id = current.objectA.id;
+			
+			comparison.winner = current.objectB;
+			comparison.loser = current.objectA;
+			comparison.tie = false;
 			break;
 		default:
-			setComparees(1);
+			setComparees();
 			return;
 	}
+	
+	comparisons.push(comparison);
+	console.log(comparisons);
 	
 	var parameters = {
 		"comparees": current,
@@ -110,7 +161,7 @@ function compare(result) {
   
 	$.get("compare_result.php", parameters)
 		.done(function() {
-			setComparees(1);
+			setComparees();
 		})
 		.fail(function(jqXHR, textStatus, errorThrown) {
 
@@ -125,13 +176,13 @@ function compare(result) {
   */
  function reset() {
 	 objectQueue = group.objects.slice();
-	 console.log("AYY LMAO: " + objectQueue);
+	 console.log(objectQueue);
  }
  
  /**
   * Small helper function that displays media based on type.
   */
-  function displayMedia(object, dest) {
+	function displayMedia(object, dest) {
 	  switch(object.type) {
 		case "image":
 			displayImage(object.address, dest);
@@ -144,3 +195,20 @@ function compare(result) {
 			break;
 	}
   }
+function test() {
+	$.getJSON("glicko.php", {"comparisons": comparisons, "categories": group.categories})
+			.done(function(data, textStatus, jqXHR) {
+
+				//Set global variable to JSON retrieved.
+				group = data;
+				console.log("AYY " + group);
+
+		})
+		.fail(function(d, textStatus, error) {
+			 
+			 // log error to browser's console
+			 console.error(d);
+			 console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+			 return "getJSON failed, status: " + textStatus + ", error: "+error;
+		});
+	}
