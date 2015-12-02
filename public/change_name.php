@@ -15,13 +15,12 @@
     {
         
 		
-		//try to insert user into array
+		//Change user's name in users and group_member table
 		$res = "UPDATE `users` SET name = '" . $_POST['name'] . "' WHERE `id` = '" . $_SESSION['id'] . "'";
         $res2 = "UPDATE group_member SET name = '" . $_POST['name'] . "' WHERE `user_id` = '" . $_SESSION['id'] . "'";
-		//print $res;
 		$result = query($res);
 		$result = query($res2);
-        
+		
 		success("Name successfully changed!");
         
     }

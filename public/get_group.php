@@ -1,9 +1,31 @@
 <?php
 	// configuration
-    require("../includes/config.php"); 
+    require("../includes/config.php");
 	
-	//Get all relevant users.
-	$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "';");
+	//Get the group type
+	$group_type = query("SELECT type FROM groups WHERE id = '". $_SESSION['group_id'] . "';");
+	//Get all relevant users
+	if($group_type[0]['type'] != "Users"){
+		//determine which media to get off group type
+		switch($group_type[0]['type']){
+			case "Images":
+				$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "' AND type = 'image';");
+				break;
+			case "Audio":
+				$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "' AND type = 'audio';");
+				break;
+			case "Documents":
+				$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "' AND type = 'document';");
+				break;
+			default:
+				$group_object = query("SELECT * FROM compare_object_group WHERE group_id = '" . $_SESSION['group_id'] . "';");
+				break;
+		}
+		
+	}else{
+		$group_object = query("SELECT * FROM group_member WHERE group_id = '" . $_SESSION['group_id'] . "';");
+	}
+	
 	
 	//Get all relevant categories
 	$categories = query("SELECT * FROM categories WHERE group_id = '" . $_SESSION['group_id'] . "';");
@@ -15,14 +37,20 @@
 	$group = ["objects" => $objects, "categories" => $categories, "user" => $user];
 	
 	foreach($group_object as $object) {
-		$user = query("SELECT * FROM users WHERE id='" . $object["owner_id"] . "';")[0];
-	
-		$media = query("SELECT * FROM media WHERE id='" . $object["object_id"] . "';")[0];
-	
-	
-		$object["name"] = $user["name"];
-		$object["address"] = $media["address"];
-		$object["type"] = $media["type"];
+		if($group_type[0]['type'] != "Users"){
+			$user = query("SELECT * FROM users WHERE id='" . $object["owner_id"] . "';")[0];
+			$media = query("SELECT * FROM media WHERE id='" . $object["object_id"] . "';")[0];
+		
+			$object["name"] = $user["name"];
+			$object["address"] = $media["address"];
+			$object["type"] = $media["type"];
+		}else{
+			$user = query("SELECT * FROM users WHERE id='" . $object["user_id"] . "';")[0];
+		
+			$object["name"] = $user["name"];
+			$object["address"] = "";
+			$object["type"] = "User";
+		}
 		
 		array_push($group["objects"], $object);
 	}

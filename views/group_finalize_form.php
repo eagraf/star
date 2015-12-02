@@ -18,8 +18,9 @@
 				<option disabled selected value="Users">Type</option>
 					<option value='Users'>Users</option>
 					<option value='Images'>Images</option>
-					<option value='Users'>Audio</option>
-					<option value='Users'>Documents</option>
+					<option value='Audio'>Audio</option>
+					<option value='Documents'>Documents</option>
+					<option value='All'>All Media</option>
 			</select>
 		</div>
 		
