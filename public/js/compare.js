@@ -43,12 +43,12 @@ window.onbeforeunload = function() {
 	$.ajax({
 		type: 'POST',
 		async: false,
-		url: 'compare_result.php',
+		url: 'glicko.php',
 		data: parameters
 	}).done(function(data, textStatus, jqXHR) {
 	
 			//Set global variable to JSON retrieved.
-			console.log(data);
+			//console.log(data);
 	}).fail(function(d, textStatus, error) {
 
 		 // log error to browser's console
@@ -58,6 +58,8 @@ window.onbeforeunload = function() {
 	 }).always(function() {
 		console.log("complete");
 	 });
+	 
+	 return null;
 		
 };
 
@@ -219,7 +221,7 @@ function compare(result) {
 	}
   }
 function test() {
-	$.getJSON("glicko.php", {"comparisons": comparisons, "categories": group.categories})
+	$.get("glicko.php", {"comparisons": comparisons, "categories": group.categories})
 			.done(function(data, textStatus, jqXHR) {
 
 				//Set global variable to JSON retrieved.
