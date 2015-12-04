@@ -221,6 +221,12 @@ function compare(result) {
 		case "document":
 			displayDocument(object.address, dest);
 			break;
+		case "link":
+			displayLink(object.address, dest);
+			break;
+		case "embed":
+			displayEmbed(object.address, dest);
+			break;
 	}
   }
 function test() {
