@@ -1,5 +1,6 @@
 <div>
-<h1> Improvement Through Competition </h1> 
+<h1> CS50 Final Project </h1>
+<h2> By Sam Rackey and Ethan Graf </h3> 
 <br>
 </div>
 
