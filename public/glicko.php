@@ -4,24 +4,24 @@
     require("../includes/config.php"); 
 	
 	compareGroupComparees($_POST["comparisons"]);
-	compareCategoryComparees($_POST["comparisons"]);
-	compareUserComparees($_POST["comparisons"]);
+	//compareCategoryComparees($_POST["comparisons"]);
+	//compareUserComparees($_POST["comparisons"]);
 	
 	function compareGroupComparees($comparisons) {
 		
 		$group_comparees = array();
 		foreach($comparisons as $comparison) {
 			if(empty($group_comparees[$comparison['winner']['id']])) {
-				$comparee = query("SELECT id, rating, deviation, volatility FROM compare_object_group WHERE id='" . $comparison['winner']['id'] . "';")[0];
+				$comparee = query("SELECT id, rating, deviation FROM compare_object_group WHERE id='" . $comparison['winner']['id'] . "';")[0];
 				if($comparee != null) {
-					$player = new Glicko2Player("group_total", $comparee['id'], $comparee['rating'], $comparee['deviation'], $comparee['volatility']);
+					$player = new Glicko2Player("group_total", $comparee['id'], $comparee['rating'], $comparee['deviation']);
 					$group_comparees[$comparee['id']] = $player;
 				}
 			}
 			if(empty($group_comparees[$comparison['loser']['id']])) {
-				$comparee = query("SELECT id, rating, deviation, volatility FROM compare_object_group WHERE id='" . $comparison['loser']['id'] . "';")[0];
+				$comparee = query("SELECT id, rating, deviation FROM compare_object_group WHERE id='" . $comparison['loser']['id'] . "';")[0];
 				if($comparee != null) {
-					$player = new Glicko2Player("group_total", $comparee['id'], $comparee['rating'], $comparee['deviation'], $comparee['volatility']);
+					$player = new Glicko2Player("group_total", $comparee['id'], $comparee['rating'], $comparee['deviation']);
 					$group_comparees[$comparee['id']] = $player;
 				}
 			}
@@ -39,7 +39,7 @@
 		}
 		foreach($group_comparees as $group_comparee) {
 			$group_comparee->update();
-			query("UPDATE compare_object_group SET rating='" . $group_comparee->rating . "', deviation='" . $group_comparee->rd . "', volatility='" . $group_comparee->sigma . "' WHERE id='" . $group_comparee->id . "';");
+			query("UPDATE compare_object_group SET rating='" . $group_comparee->rating . "', deviation='" . $group_comparee->rd . "' WHERE id='" . $group_comparee->id . "';");
 		}
 	}
 	
@@ -52,14 +52,14 @@
 			if(empty($category_comparees[$comparison['category_id']][$comparison['winner']['object_id']])) {
 				$category_comparee = query("SELECT * FROM object_category WHERE object_id='" . $comparison['winner']['object_id'] . "' AND category_id='" . $comparison['category_id'] . "';")[0];
 				if($category_comparee != null) {
-					$player = new Glicko2Player("category", $category_comparee['object_id'], $category_comparee['rating'], $category_comparee['deviation'], $category_comparee['volatility']);
+					$player = new Glicko2Player("category", $category_comparee['object_id'], $category_comparee['rating'], $category_comparee['deviation']);
 					$category_comparees[$comparison['category_id']][$category_comparee['object_id']] = $player;
 				}
 			}
 			if(empty($category_comparees[$comparison['category_id']][$comparison['loser']['object_id']])) {
 				$category_comparee = query("SELECT * FROM object_category WHERE object_id='" . $comparison['loser']['object_id'] . "' AND category_id='" . $comparison['category_id'] . "';")[0];
 				if($category_comparee != null) {
-					$player = new Glicko2Player("category", $category_comparee['object_id'], $category_comparee['rating'], $category_comparee['deviation'], $category_comparee['volatility']);
+					$player = new Glicko2Player("category", $category_comparee['object_id'], $category_comparee['rating'], $category_comparee['deviation']);
 					$category_comparees[$comparison['category_id']][$category_comparee['object_id']] = $player;
 				}
 			}
@@ -77,7 +77,7 @@
 		foreach($category_comparees as $key => $category) {
 			foreach($category as $category_comparee) {
 				$category_comparee->update();
-				query("UPDATE object_category SET rating='" . $category_comparee->rating . "', deviation='" . $category_comparee->rd . "', volatility='" . $category_comparee->sigma . "' WHERE object_id='" . $category_comparee->id . "' AND category_id='" . $key . "';");
+				query("UPDATE object_category SET rating='" . $category_comparee->rating . "', deviation='" . $category_comparee->rd . "' WHERE object_id='" . $category_comparee->id . "' AND category_id='" . $key . "';");
 			}
 		}
 	}
@@ -85,16 +85,16 @@
 		$user_comparees = array();
 		foreach($comparisons as $comparison) {
 			if(empty($user_comparees[$comparison['winner']['owner_id']])) {
-				$user = query("SELECT id, user_id, rating, deviation, volatility FROM group_member WHERE user_id='" . $comparison['winner']['owner_id'] . "';")[0];
+				$user = query("SELECT id, user_id, rating, deviation FROM group_member WHERE user_id='" . $comparison['winner']['owner_id'] . "';")[0];
 				if($user != null) {
-					$player = new Glicko2Player("user_total", $user['user_id'], $user['rating'], $user['deviation'], $user['volatility']);
+					$player = new Glicko2Player("user_total", $user['user_id'], $user['rating'], $user['deviation']);
 					$user_comparees[$user['user_id']] = $player;
 				}
 			}
 			if(empty($user_comparees[$comparison['loser']['owner_id']])) {
-				$user = query("SELECT id, user_id, rating, deviation, volatility FROM group_member WHERE user_id='" . $comparison['loser']['owner_id'] . "';")[0];
+				$user = query("SELECT id, user_id, rating, deviation FROM group_member WHERE user_id='" . $comparison['loser']['owner_id'] . "';")[0];
 				if($user != null) {
-					$player = new Glicko2Player("user_total", $user['user_id'], $user['rating'], $user['deviation'], $user['volatility']);
+					$player = new Glicko2Player("user_total", $user['user_id'], $user['rating'], $user['deviation']);
 					$user_comparees[$user['user_id']] = $player;
 				}
 			}
@@ -111,7 +111,7 @@
 		}
 		foreach($user_comparees as $user_comparee) {
 			$user_comparee->update();
-			query("UPDATE group_member SET rating='" . $user_comparee->rating . "', deviation='" . $user_comparee->rd . "', volatility='" . $user_comparee->sigma . "' WHERE id='" . $user_comparee->id . "';");
+			query("UPDATE group_member SET rating='" . $user_comparee->rating . "', deviation='" . $user_comparee->rd . "' WHERE id='" . $user_comparee->id . "';");
 		}
 	}
 ?>

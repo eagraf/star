@@ -58,7 +58,7 @@ window.onbeforeunload = function() {
 	 }).always(function() {
 		console.log("complete");
 	 });
-		
+	return "AYY LMAO";
 };
 
 /**
