@@ -8,7 +8,7 @@
 		
 		//add the group to the group table, do not insert size as 0
 		$query = "INSERT INTO  groups (name, size, type, description) 
-		VALUES (\"" . $_POST['group_name'] . "\",\"" . 0 . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
+		VALUES (\"" . $_POST['group_name'] . "\",\"" . 1 . "\",\"" . $_POST['type'] . "\",\"" . $_POST['group_desc'] . "\");";
 		$reference = query($query);
 		
 		//get the id for the group just entered

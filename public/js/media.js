@@ -15,12 +15,12 @@
             var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
             for (var i in data.images) { 
                 content+="<tr>";
-                content+="<td>" + data.images[i].name + "</td>";
-				content+="<td>" + data.images[i].type + "</td>";
-                content+="<td>" + data.images[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data.images[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data.images[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data.images[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayImage('" + data.images[i].address  + "', 'middle')\"\>";
+				content+="<button class=\"btn btn-default\" onclick=\"displayImage('" + data.images[i].address  + "', 'container')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
@@ -29,12 +29,12 @@
             }
 			for (var i in data.audio) { 
                 content+="<tr>";
-                content+="<td>" + data.audio[i].name + "</td>";
-				content+="<td>" + data.audio[i].type + "</td>";
-                content+="<td>" + data.audio[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data.audio[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data.audio[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data.audio[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'middle')\"\>";
+				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'container')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
@@ -43,12 +43,12 @@
             }
 			for (var i in data.documents) { 
                 content+="<tr>";
-                content+="<td>" + data.documents[i].name + "</td>";
-				content+="<td>" + data.documents[i].type + "</td>";
-                content+="<td>" + data.documents[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data.documents[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data.documents[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data.documents[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayDocument('" + data.documents[i].address  + "', 'middle')\"\>";
+				content+="<button class=\"btn btn-default\" onclick=\"displayDocument('" + data.documents[i].address  + "', 'container')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
@@ -78,9 +78,9 @@
 			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th><th>Insert:</th></tr></thead><tbody>";
             for (var i in data.images) { 
                 content+="<tr>";
-                content+="<td>" + data.images[i].name + "</td>";
-				content+="<td>" + data.images[i].type + "</td>";
-                content+="<td>" + data.images[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data.images[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data.images[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data.images[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
 				content+="<button class=\"btn btn-default\" onclick=\"displayImage('" + data.images[i].address  + "', 'middle')\"\>";
@@ -99,9 +99,9 @@
             }
 			for (var i in data.audio) { 
                 content+="<tr>";
-                content+="<td>" + data.audio[i].name + "</td>";
-				content+="<td>" + data.audio[i].type + "</td>";
-                content+="<td>" + data.audio[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data.audio[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data.audio[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data.audio[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
 				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'middle')\"\>";
@@ -120,9 +120,9 @@
             }
 			for (var i in data.documents) { 
                 content+="<tr>";
-                content+="<td>" + data.documents[i].name + "</td>";
-				content+="<td>" + data.documents[i].type + "</td>";
-                content+="<td>" + data.documents[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data.documents[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data.documents[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data.documents[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
 				content+="<button class=\"btn btn-default\" onclick=\"displayDocument('" + data.documents[i].address  + "', 'middle')\"\>";
@@ -154,6 +154,13 @@
  
  function displayImage(address, element) {
 	var content = "<img src=\"" + address + "\" alt=\"hi\">";
+	if(element == "container") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayTable('container')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
 	if(element == "middle") {
 		content+="<div class=\"form-group\">";
 		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
@@ -168,7 +175,14 @@
  function displayAudio(address, element) {
 	 var content = "<audio controls><source src=\"" + address + "\"></audio>";
 	 
-	 if(element == "middle") {
+	 if(element == "container") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayTable('container')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	if(element == "middle") {
 		content+="<div class=\"form-group\">";
 		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
 		content+="Back";
@@ -182,7 +196,14 @@
  function displayDocument(address, element) {
 	 var content = "<embed src=\"" + address + "\" width=\"600\" height=\"500\" alt=\"pdf\" pluginspage=\"http://www.adobe.com/products/acrobat/readstep2.html\">";
 	 
-	 if(element == "middle") {
+	 if(element == "container") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayTable('container')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	if(element == "middle") {
 		content+="<div class=\"form-group\">";
 		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
 		content+="Back";

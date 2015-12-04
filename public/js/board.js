@@ -17,7 +17,7 @@
 			console.log(data.groups[i].id);
 			content += "<option value='" + data.groups[i].id + "'>" + data.groups[i].name + "</option>";
 		}
-		content += "</select></div><div class=\"form-group\"><a href=\"group_create.php\" class=\"btn btn-default\" role=\"button\">New Group</a></div></fieldset></form>";
+		content += "</select></div>";
 		
 		document.getElementById("group_changer").innerHTML = content;
 	})
@@ -69,11 +69,11 @@
 		.done(function(data, textStatus, jqXHR) {
 	
 			console.log(data);
-			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>Rating:</th></tr></thead><tbody>";
+			var content = "<table class=\"table\"><thead><tr><th>Stars:</th><th>Name:</th></tr></thead><tbody>";
 			for (var i in data) { 
 				content+="<tr>";
+				content+="<td>" +  "<img alt=\"Star\" src=\"/img/staricon.png\"/>" + data[i].rating + "</td>";
 				content+="<td>" + data[i].name + "</td>";
-				content+="<td>" + data[i].rating + "</td>";
 				content+="</tr>";
 			}
 			
