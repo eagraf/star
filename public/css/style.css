@@ -33,6 +33,9 @@ form{
 	display: inline;
 }
 
+table.fixed { table-layout:fixed; }
+table.fixed td { overflow: hidden; }
+
 #top .nav
 {
     display: block;
@@ -93,18 +96,21 @@ form{
 
 #objecta
 {
+	margin-right: 10px;
 	color: #C2F0F0;
 	display: inline-block; 
 }
 
 #objectb
 {
+	margin-left: 10px;
 	color: #C2F0F0;
 	display: inline-block; 
 }
 
 #media_a img
 {
+	margin-right: 10px;
 	height:350px;
 	width:auto;
 	max-width:600px;
@@ -112,6 +118,7 @@ form{
 
 #media_b img
 {
+	margin-left: 10px;
 	height:350px;
 	width:auto;
 	max-width:600px;
@@ -122,6 +129,7 @@ form{
 
 #skip
 {
+	margin-top: 20px;
 	margin-left: auto;
     margin-right: auto;
 }

@@ -32,9 +32,11 @@
 	
 	//Get current user.
 	$user = query("SELECT * FROM users WHERE id='" . $_SESSION["id"] . "';")[0];
+	$name = query("SELECT name FROM groups WHERE id='" . $_SESSION["group_id"] . "';");
+	$name = $name[0]["name"];
 	
 	$objects = array();
-	$group = ["objects" => $objects, "categories" => $categories, "user" => $user];
+	$group = ["objects" => $objects, "categories" => $categories, "user" => $user, "name" => $name];
 	
 	foreach($group_object as $object) {
 		if($group_type[0]['type'] != "Users"){

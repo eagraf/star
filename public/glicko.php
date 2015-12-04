@@ -4,8 +4,8 @@
     require("../includes/config.php"); 
 	
 	compareGroupComparees($_POST["comparisons"]);
-	compareCategoryComparees($_POST["comparisons"]);
-	compareUserComparees($_POST["comparisons"]);
+	//compareCategoryComparees($_POST["comparisons"]);
+	//compareUserComparees($_POST["comparisons"]);
 	
 	function compareGroupComparees($comparisons) {
 		
