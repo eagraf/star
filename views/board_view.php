@@ -9,26 +9,7 @@
         </thead>
 
         <tbody>
-			<form action="change_group.php" method="post">
-				<fieldset>
-					<div class="form-group">
-						<select class="form-control" name="group" onchange='this.form.submit()'>
-							<?php
-							print("<option disabled selected value=\"\">{$group_id}</option>");
-
-							foreach ($groups as $group)
-							{
-								print("<option value='{$group["group_id"]}'>{$group["group"]}</option>");
-							}
-
-							?>
-						</select>
-					</div>
-					<div class="form-group">
-						<a href="group_create.php" class="btn btn-default" role="button">New Group</a>
-					</div>
-				</fieldset>
-			<form action="sell.php" method="post">
+			
             <?php
 			
 			

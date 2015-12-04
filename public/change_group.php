@@ -9,9 +9,9 @@
 		//if the user selected a group to change, change it
         if(!empty($_POST['group'])){
 			$_SESSION['group_id'] = $_POST['group'];
-			redirect("board.php");
+			redirect("board.html");
 		}else{
-			redirect("board.php");
+			redirect("board.html");
 		}
     }
 

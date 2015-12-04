@@ -4,7 +4,7 @@
 	$user = query("SELECT * FROM `users` WHERE id =" . $_SESSION["id"] . ";");
 	
 	//get all groups the user is in, and print them
-	$names = query("SELECT * FROM group_member WHERE user_id = '" . $_SESSION['id'] . "';");
+	$names = query("SELECT group_id FROM group_member WHERE user_id = '" . $_SESSION['id'] . "';");
 	$groups = [];
 	foreach ($names as $name)
     {

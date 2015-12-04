@@ -12,18 +12,19 @@
 		.done(function(data, textStatus, jqXHR) {
 		
 			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
+            var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
             for (var i in data.images) { 
                 content+="<tr>";
                 content+="<td>" + data.images[i].name + "</td>";
 				content+="<td>" + data.images[i].type + "</td>";
                 content+="<td>" + data.images[i].address + "</td>";
-				content+="<td><form action=\"view_media.php\" method=\"post\">";
+				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" type=\"submit\" name=\"media_id\" value=" + data.images[i].id  + "\">";
+				content+="<button class=\"btn btn-default\" onclick=\"displayImage('" + data.images[i].address  + "', 'middle')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
-				content+="</form></td>";
+				content+="</td>";
                 content+="</tr>";
             }
 			for (var i in data.audio) { 
@@ -31,13 +32,13 @@
                 content+="<td>" + data.audio[i].name + "</td>";
 				content+="<td>" + data.audio[i].type + "</td>";
                 content+="<td>" + data.audio[i].address + "</td>";
-				content+="<td><form action=\"view_media.php\" method=\"post\">";
+				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" type=\"submit\" name=\"media_id\" value=" + data.audio[i].id  + "\">";
+				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'middle')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
-				content+="</form></td>";
+				content+="</td>";
                 content+="</tr>";
             }
 			for (var i in data.documents) { 
@@ -45,13 +46,13 @@
                 content+="<td>" + data.documents[i].name + "</td>";
 				content+="<td>" + data.documents[i].type + "</td>";
                 content+="<td>" + data.documents[i].address + "</td>";
-				content+="<td><form action=\"view_media.php\" method=\"post\">";
+				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" type=\"submit\" name=\"media_id\" value=" + data.documents[i].id  + "\">";
+				content+="<button class=\"btn btn-default\" onclick=\"displayDocument('" + data.documents[i].address  + "', 'middle')\"\>";
 				content+="View";
 				content+="</button>";
 				content+="</div>";
-				content+="</form></td>";
+				content+="</td>";
                 content+="</tr>";
             }
 			content+="</tbody></table></div>";

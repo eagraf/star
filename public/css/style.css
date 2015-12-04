@@ -40,6 +40,11 @@ form{
     
 }
 
+#middle .nav
+{
+    display: block;
+}
+
 
 #middle .form-control
 {

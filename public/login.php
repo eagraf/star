@@ -33,7 +33,7 @@
                 $_SESSION["id"] = $row[0]["id"];
 				$_SESSION["group_id"] = null;
 
-				redirect("board.php");
+				redirect("board.html");
             }
 
             
