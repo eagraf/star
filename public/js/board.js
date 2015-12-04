@@ -1,6 +1,6 @@
 /**
  * JavaScript code for leader board functions.
- * Ethan Graf 12/3//2015
+ * Ethan Graf 12/3//2ind15
  */
  
  window.onload = function() {
@@ -61,7 +61,43 @@
  }
  
  function showCategories() {
-	 
+	 $.getJSON("board.php", {"type": "categories"})
+		.done(function(data, textStatus, jqXHR) {
+	
+			console.log(data);
+			console.log(data[0]);
+			showCategory(data, 0);
+			
+	})
+	.fail(function(d, textStatus, error) {
+		 console.log(d);
+		 // log error to browser's console
+		 console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+		 return "getJSON failed, status: " + textStatus + ", error: "+error;
+	});
+ }
+ 
+ function showCategory(categories, ind) {
+	 var ind = 0;
+	 var content = "<div><a class=\"btn btn-default\" role=\"button\" onclick=\"showCategory(" + categories + ", " + ind+1 + ")\">Next Category</a></div>";
+	 content += "<h1>" + categories[ind].name + "</h1>";  
+ 	 content += "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>Rating:</th><th>View:</th></tr></thead><tbody>";
+			for (var i in categories[ind].objects) { 
+				content+="<tr>";
+				content+="<td>" + categories[ind].objects[i].name + "</td>";
+				content+="<td>" + categories[ind].objects[i].type + "</td>";
+				content+="<td>" + categories[ind].objects[i].rating + "</td>";
+				content+="<td>";
+				content+="<div class=\"form-group\">";
+				content+=printMedia(categories[ind].objects[i].type, categories[ind].objects[i].address);
+				content+="</div>";
+				content+="</form></td>";
+				content+="</tr>";
+			}
+			
+			content+="</tbody></table></div>";
+			
+			document.getElementById("content").innerHTML = content;
  }
  
  function showUsers() {
@@ -100,7 +136,7 @@
 		 case "link":
 			return "<a href=\"" + value + "\">" + value + "</a>";
 		 case "embed":
-			return "<iframe width=\"420\" height=\"315\" src=\"" + value + "\"></iframe>";
+			return "<iframe width=\"42ind\" height=\"315\" src=\"" + value + "\"></iframe>";
 	 }
  }
  

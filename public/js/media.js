@@ -141,7 +141,7 @@
  }
  
  function displayLink(address, element) {
-	 var content = "<a href=\"" + address + "\">" + address + "</a>";
+	 var content = "<a href=\"" + address + "\" target=\"_blank\">" + address + "</a>";
 	 
 	 if(element == "container") {
 		content+="<div class=\"form-group\">";

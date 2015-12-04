@@ -43,7 +43,8 @@
 			$user = query("SELECT * FROM users WHERE id='" . $object["owner_id"] . "';")[0];
 			$media = query("SELECT * FROM media WHERE id='" . $object["object_id"] . "';")[0];
 		
-			$object["name"] = $user["name"];
+			$object["user_name"] = $user["name"];
+			$object["name"] = $media["name"];
 			$object["address"] = $media["address"];
 			$object["type"] = $media["type"];
 		}else{

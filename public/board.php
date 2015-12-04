@@ -35,7 +35,24 @@
 	}
 	
 	function getCategory() {
-		//$total_ratings = query("SELECT * FROM compare_object_group WHERE group_id='" . $_SESSION["group_id"] . "' ORDER BY rating DESC LIMIT 20);");
+		$categories = query("SELECT id, category FROM categories WHERE group_id='" . $_SESSION['group_id'] . "';");
+		$category_objects = array();
+		foreach($categories as $category) {
+			$category_object['name'] = $category['category'];
+			
+			$res = array();
+			$objects = query("SELECT object_id, rating FROM object_category ORDER BY rating DESC LIMIT 20;");
+			foreach($objects as $object) {
+				$media = query("SELECT name, address, type FROM media WHERE id='" . $object['object_id'] . "';")[0];
+				$res_object = array_merge($object, $media);
+				array_push($res, $res_object);
+			}
+			$category_object['objects'] = $res;
+			array_push($category_objects, $category_object);
+		}
+		
+		header("Content-type: application/json");
+		print(json_encode($category_objects, JSON_PRETTY_PRINT));
 	}
 	
 	function getUsers() {
