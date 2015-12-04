@@ -103,6 +103,9 @@ function setComparees() {
 	//Randomly get category.
 	var category = getCategory();
 	
+	//Get the name of the group
+	var g_name = group.name;
+	
 	//Update global variable current, so that it can be referenced in compare().
 	current.objectA = objectA;
 	current.objectB = objectB;
@@ -111,7 +114,7 @@ function setComparees() {
 	//Set the text of the button to the comparees name.
 	$("#view_a").text(objectA.name);
 	$("#view_b").text(objectB.name);
-	$("#view_c").text("On " + category + ":");
+	$("#view_c").text("From " + g_name + ", On " + category + ":");
 	
 	//Display the different types of media.
 	displayMedia(objectA, "media_a");

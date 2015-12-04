@@ -14,15 +14,14 @@
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {	
 		//ensure the user entered an appropriate group size
-		if (empty($_POST["group_size"]))
+		if (empty($_POST["cat_num"]))
         {
-            error("You must specify the size of the group.");
+            error("You must specify the number of categories.");
         }
 		
-		$size = $_POST['group_size'];
 		$cat_num = $_POST['cat_num'];
 		
-		render("group_finalize_form.php", ["title" => "Register", "size" => $size, "cat_num" => $cat_num]);
+		render("group_finalize_form.php", ["title" => "Register", "cat_num" => $cat_num]);
 		
     }
 

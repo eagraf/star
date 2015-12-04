@@ -1,10 +1,9 @@
 <div>
     <table class="table ">
-
         <thead>
             <tr>
-                <th>Name:</th>
                 <th>Stars:</th>
+				<th>Name:</th>
             </tr>
         </thead>
 
@@ -38,8 +37,8 @@
 				
 				if($i < 10){
                 print("<tr>");
+				print("<td><img alt=\"Star\" src=\"/img/staricon.png\"/>{$rank["score"]}</td>");
                 print("<td>{$rank["name"]}</td>");
-                print("<td>{$rank["score"]}</td>");
                 print("</tr>");
 				}
 				$i++;

@@ -8,7 +8,7 @@
 
         <link href="/css/style.css" rel="stylesheet"/>
 
-        <title>Star: Compare</title>
+        <title>Star: Home</title>
 	
 		<!-- https://jquery.com/ -->
         <script src="/js/jquery-1.11.3.min.js"></script>
@@ -16,18 +16,12 @@
         <!-- http://getbootstrap.com/ -->
         <script src="/js/bootstrap.min.js"></script>
 		
-		<script src="/js/scripts.js"></script>
-		
-		<script>
-			header();
-			footer();
-		</script>
-		
-		<script src="/js/compare.js"></script>
-		
+		<script src="/js/profile.js"></script>
 		<script src="/js/media.js"></script>
 		
-		
+		<script>
+			displayNav("middle");
+		</script>
 
 
     </head>
@@ -37,7 +31,7 @@
         <div class="container">
 
             <div id="top">
-			<div id="nav">
+				<div id="nav">
 					<ul class="nav nav-tabs">
 						<a href="/"><img alt="StarBoard" src="/img/small_star_logo.png" align="left"/></a>
 						<li><a href="compare.html">Compare</a></li>
@@ -47,33 +41,11 @@
 						<li><a href="logout.php">Log Out</a></li>
 					</ul>
 				</div>
-			</div>
+            </div>
 			
-            <div id="middle">
-				<h2 id="view_c">C</h2>
-				<span>
-					<span id="objecta">
-						<div id="media_a" width="150px"></div>
-						<button class="btn btn-default" onclick="compare(1);" width="150px">
-							<h1 id="view_a"></h1>
-						</button>
-					</span>
-					
-					<span id="objectb">
-						<div id="media_b" width="150px"></div>
-						<button class="btn btn-default" onclick="compare(2);" width="150px">
-							<h1 id="view_b"></h1>
-						</button>
-					</span>
-				</span>
-				
-				<div id="skip">
-					<button class="btn btn-default" onclick="compare(0);" >
-						<h2>Skip</h2>
-					</button>
-				</div>
+            <div id="middle"></div>
 			
-			</div>
+			<div id="container"></div>
 			
 			<div id="bottom">
 				Copyright <a href="about.php">RYEE</a> 2015
