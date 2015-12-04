@@ -20,7 +20,7 @@
                 content+="<td style=\"text-align:left\">" + data[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+=printMedia(data[i].type, data[i].address);
+				content+=printMedia(data[i].type, data[i].address, "container");
 				content+="</div>";
 				content+="</td>";
                 content+="</tr>";
@@ -53,7 +53,7 @@
                 content+="<td style=\"text-align:left\">" + data[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+=printMedia(data[i].type, data[i].address);
+				content+=printMedia(data[i].type, data[i].address, "middle");
 				content+="</div>";
 				content+="</td>";
 				content+="<td>";
@@ -94,6 +94,13 @@
 		content+="</button>";
 		content+="</div>";
 	}
+	if(element == "content") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"showTotal()\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
 
 	document.getElementById(element).innerHTML = content;	 
  }
@@ -115,6 +122,13 @@
 		content+="</button>";
 		content+="</div>";
 	}
+	if(element == "content") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"showTotal()\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
 	
 	 document.getElementById(element).innerHTML = content;
  }
@@ -132,6 +146,13 @@
 	if(element == "middle") {
 		content+="<div class=\"form-group\">";
 		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	if(element == "content") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"showTotal()\"\>";
 		content+="Back";
 		content+="</button>";
 		content+="</div>";
@@ -197,17 +218,17 @@
      });
  }
  
- function printMedia(type, value) {
+ function printMedia(type, value, loc) {
 	 switch(type) {
 		 case "image":
-			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', '" + loc +"')\"\>View</button>";
 		 case "audio":
-			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', '" + loc +"')\"\>View</button>";
 		 case "document":
-			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', '" + loc +"')\"\>View</button>";
 		 case "link":
-			return "<button class=\"btn btn-default\" onclick=\"displayLink('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayLink('" + value  + "', '" + loc +"')\"\>View</button>";
 		 case "embed":
-			return "<button class=\"btn btn-default\" onclick=\"displayEmbed('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayEmbed('" + value  + "', '" + loc +"')\"\>View</button>";
 	 }
  }

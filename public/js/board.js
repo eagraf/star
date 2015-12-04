@@ -42,7 +42,7 @@
 				content+="<td>" + data[i].rating + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+=printMedia(data[i].type, data[i].address);
+				content+=printMedia(data[i].type, data[i].address, "content");
 				content+="</div>";
 				content+="</form></td>";
 				content+="</tr>";
@@ -125,14 +125,14 @@
 	});
  }
  
- function printMedia(type, value) {
+ function printMedia(type, value, loc) {
 	 switch(type) {
 		 case "image":
-			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', '" + loc + "')\"\>View</button>";
 		 case "audio":
-			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', '" + loc + "')\"\>View</button>";
 		 case "document":
-			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', '" + loc + "')\"\>View</button>";
 		 case "link":
 			return "<a href=\"" + value + "\">" + value + "</a>";
 		 case "embed":
