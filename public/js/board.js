@@ -97,6 +97,10 @@
 			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', 'middle')\"\>View</button>";
 		 case "document":
 			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', 'middle')\"\>View</button>";
+		 case "link":
+			return "<a href=\"" + value + "\">" + value + "</a>";
+		 case "embed":
+			return "<iframe width=\"420\" height=\"315\" src=\"" + value + "\"></iframe>";
 	 }
  }
  
