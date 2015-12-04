@@ -56,7 +56,8 @@
 			array_push($groups, $group);
 			
 		}
-		$res["current"] = query("SELECT name FROM groups WHERE id='" . $_SESSION['id'] . "';");
+		$result = query("SELECT name FROM groups WHERE id='" . $_SESSION['group_id'] . "';");
+		$res["current"] = $result[0]['name'];
 		$res["groups"] = $groups;
 		
 		header("Content-type: application/json");

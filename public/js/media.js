@@ -168,6 +168,13 @@
 		content+="</button>";
 		content+="</div>";
 	}
+	if(element == "content") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"showTotal()\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
 
 	document.getElementById(element).innerHTML = content;	 
  }
@@ -189,6 +196,13 @@
 		content+="</button>";
 		content+="</div>";
 	}
+	if(element == "content") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"showTotal()\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
 	
 	 document.getElementById(element).innerHTML = content;
  }
@@ -206,6 +220,13 @@
 	if(element == "middle") {
 		content+="<div class=\"form-group\">";
 		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	if(element == "content") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"showTotal()\"\>";
 		content+="Back";
 		content+="</button>";
 		content+="</div>";

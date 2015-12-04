@@ -92,11 +92,11 @@
  function printMedia(type, value) {
 	 switch(type) {
 		 case "image":
-			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', 'content')\"\>View</button>";
 		 case "audio":
-			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', 'content')\"\>View</button>";
 		 case "document":
-			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', 'middle')\"\>View</button>";
+			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', 'content')\"\>View</button>";
 	 }
  }
  
