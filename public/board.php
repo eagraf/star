@@ -57,7 +57,11 @@
 			
 		}
 		$result = query("SELECT name FROM groups WHERE id='" . $_SESSION['group_id'] . "';");
-		$res["current"] = $result[0]['name'];
+		if(!empty($result)){
+			$res["current"] = $result[0]['name'];
+		}else{
+			$res["current"] = "";
+		}
 		$res["groups"] = $groups;
 		
 		header("Content-type: application/json");
