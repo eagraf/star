@@ -13,44 +13,14 @@
 		
 			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
             var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
-            for (var i in data.images) { 
+            for (var i in data) { 
                 content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data.images[i].name + "</td>";
-				content+="<td style=\"text-align:left\">" + data.images[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data.images[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayImage('" + data.images[i].address  + "', 'container')\"\>";
-				content+="View";
-				content+="</button>";
-				content+="</div>";
-				content+="</td>";
-                content+="</tr>";
-            }
-			for (var i in data.audio) { 
-                content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data.audio[i].name + "</td>";
-				content+="<td style=\"text-align:left\">" + data.audio[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data.audio[i].address + "</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'container')\"\>";
-				content+="View";
-				content+="</button>";
-				content+="</div>";
-				content+="</td>";
-                content+="</tr>";
-            }
-			for (var i in data.documents) { 
-                content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data.documents[i].name + "</td>";
-				content+="<td style=\"text-align:left\">" + data.documents[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data.documents[i].address + "</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayDocument('" + data.documents[i].address  + "', 'container')\"\>";
-				content+="View";
-				content+="</button>";
+				content+=printMedia(data[i].type, data[i].address);
 				content+="</div>";
 				content+="</td>";
                 content+="</tr>";
@@ -76,63 +46,19 @@
 		.done(function(data, textStatus, jqXHR) {
 		
 			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th><th>Insert:</th></tr></thead><tbody>";
-            for (var i in data.images) { 
+            for (var i in data) { 
                 content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data.images[i].name + "</td>";
-				content+="<td style=\"text-align:left\">" + data.images[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data.images[i].address + "</td>";
+                content+="<td style=\"text-align:left\">" + data[i].name + "</td>";
+				content+="<td style=\"text-align:left\">" + data[i].type + "</td>";
+                content+="<td style=\"text-align:left\">" + data[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayImage('" + data.images[i].address  + "', 'middle')\"\>";
-				content+="View";
-				content+="</button>";
+				content+=printMedia(data[i].type, data[i].address);
 				content+="</div>";
 				content+="</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"insertMedia(" + data.images[i].id + ")\"\>";
-				content+="Insert";
-				content+="</button>";
-				content+="</div>";
-				content+="</td>";
-                content+="</tr>";
-            }
-			for (var i in data.audio) { 
-                content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data.audio[i].name + "</td>";
-				content+="<td style=\"text-align:left\">" + data.audio[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data.audio[i].address + "</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayAudio('" + data.audio[i].address  + "', 'middle')\"\>";
-				content+="View";
-				content+="</button>";
-				content+="</div>";
-				content+="</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"insertMedia(" + data.audio[i].id + ")\"\>";
-				content+="Insert";
-				content+="</button>";
-				content+="</div>";
-				content+="</td>";
-                content+="</tr>";
-            }
-			for (var i in data.documents) { 
-                content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data.documents[i].name + "</td>";
-				content+="<td style=\"text-align:left\">" + data.documents[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data.documents[i].address + "</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"displayDocument('" + data.documents[i].address  + "', 'middle')\"\>";
-				content+="View";
-				content+="</button>";
-				content+="</div>";
-				content+="</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
-				content+="<button class=\"btn btn-default\" onclick=\"insertMedia(" + data.documents[i].id + ")\"\>";
+				content+="<button class=\"btn btn-default\" onclick=\"insertMedia(" + data[i].id + ")\"\>";
 				content+="Insert";
 				content+="</button>";
 				content+="</div>";
@@ -235,6 +161,48 @@
 	 document.getElementById(element).innerHTML = content;
  }
  
+ function displayLink(address, element) {
+	 var content = "<a href=\"" + address + "\">" + address + "</a>";
+	 
+	 if(element == "container") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayTable('container')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	if(element == "middle") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	
+	 document.getElementById(element).innerHTML = content;
+ }
+ 
+ function displayEmbed(address, element) {
+	 var content = "<iframe width=\"420\" height=\"315\" src=\"" + address + "\"></iframe>";
+	 
+	 if(element == "container") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayTable('container')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	if(element == "middle") {
+		content+="<div class=\"form-group\">";
+		content+="<button class=\"btn btn-default\" onclick=\"displayInsertTable('middle')\"\>";
+		content+="Back";
+		content+="</button>";
+		content+="</div>";
+	}
+	
+	 document.getElementById(element).innerHTML = content;
+ }
+ 
  function insertMedia(media_id) {
 	 
 	parameters = { "media_id": media_id };
@@ -248,4 +216,19 @@
          // log error to browser's console
          console.log(errorThrown.toString());
      });
+ }
+ 
+ function printMedia(type, value) {
+	 switch(type) {
+		 case "image":
+			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', 'middle')\"\>View</button>";
+		 case "audio":
+			return "<button class=\"btn btn-default\" onclick=\"displayAudio('" + value  + "', 'middle')\"\>View</button>";
+		 case "document":
+			return "<button class=\"btn btn-default\" onclick=\"displayDocument('" + value  + "', 'middle')\"\>View</button>";
+		 case "link":
+			return "<button class=\"btn btn-default\" onclick=\"displayLink('" + value  + "', 'middle')\"\>View</button>";
+		 case "embed":
+			return "<button class=\"btn btn-default\" onclick=\"displayEmbed('" + value  + "', 'middle')\"\>View</button>";
+	 }
  }

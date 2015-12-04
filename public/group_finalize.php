@@ -41,7 +41,7 @@
 			redirect("login.php");
 		}else{
 			$_SESSION['group_id'] = $_POST['group_name'];
-			redirect("board.php");
+			redirect("board.html");
 		}
 		
 		

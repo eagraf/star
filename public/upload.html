@@ -16,11 +16,9 @@
         <!-- http://getbootstrap.com/ -->
         <script src="/js/bootstrap.min.js"></script>
 		
-		<script src="/js/media.js"></script>
+		<script src="/js/upload.js"></script>
 		
-		<script>
-			displayTable("middle");
-		</script>
+		<script src="/js/media.js"></script>
 
 
     </head>
@@ -42,7 +40,17 @@
 				</div>
             </div>
 			
-            <div id="middle"></div>
+            <div id="middle">
+				<div id="nav">
+					<ul class="nav nav-tabs">
+					  <li onclick="showUpload()"><a>File</a></li>
+					  <li onclick="showLink()"><a>Link</a></li>
+					  <li onclick="showEmbed()"><a>Embed</a></li>
+					</ul>
+				</div>
+				<div id="content"></div>
+			</div>
+			
 			
 			<div id="bottom">
 				Copyright <a href="about.php">RYEE</a> 2015
