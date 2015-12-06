@@ -11,13 +11,11 @@
 	$.getJSON("get_media.php", parameters)
 		.done(function(data, textStatus, jqXHR) {
 		
-			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
-            var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th></tr></thead><tbody>";
+            var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>View:</th></tr></thead><tbody>";
             for (var i in data) { 
                 content+="<tr>";
                 content+="<td style=\"text-align:left\">" + data[i].name + "</td>";
 				content+="<td style=\"text-align:left\">" + data[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
 				content+=printMedia(data[i].type, data[i].address, "container");
@@ -45,12 +43,11 @@
 	$.getJSON("get_media.php", parameters)
 		.done(function(data, textStatus, jqXHR) {
 		
-			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>type:</th><th>address:</th><th>View:</th><th>Insert:</th></tr></thead><tbody>";
+			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>View:</th><th>Insert:</th></tr></thead><tbody>";
             for (var i in data) { 
                 content+="<tr>";
                 content+="<td style=\"text-align:left\">" + data[i].name + "</td>";
 				content+="<td style=\"text-align:left\">" + data[i].type + "</td>";
-                content+="<td style=\"text-align:left\">" + data[i].address + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
 				content+=printMedia(data[i].type, data[i].address, "middle");
