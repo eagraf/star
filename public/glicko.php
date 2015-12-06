@@ -4,8 +4,8 @@
     require("../includes/config.php"); 
 	
 	compareGroupComparees($_POST["comparisons"]);
-	//compareCategoryComparees($_POST["comparisons"]);
-	//compareUserComparees($_POST["comparisons"]);
+	compareCategoryComparees($_POST["comparisons"]);
+	compareUserComparees($_POST["comparisons"]);
 	
 	function compareGroupComparees($comparisons) {
 		
@@ -111,7 +111,7 @@
 		}
 		foreach($user_comparees as $user_comparee) {
 			$user_comparee->update();
-			query("UPDATE group_member SET rating='" . $user_comparee->rating . "', deviation='" . $user_comparee->rd . "' WHERE id='" . $user_comparee->id . "';");
+			query("UPDATE group_member SET rating='" . $user_comparee->rating . "', deviation='" . $user_comparee->rd . "' WHERE user_id='" . $user_comparee->id . "';");
 		}
 	}
 ?>
