@@ -11,8 +11,8 @@
 		console.log(data);
 	
 		var content = "<form action=\"change_group.php\" method=\"post\"><fieldset><div class=\"form-group\"><select class=\"form-control\" name=\"group\" onchange='this.form.submit()'>";
-		content += "<option disabled selected value=\"\">";
-		content += data.current;
+		content += "<option disabled selected value=\"" + data.current.id + "\">";
+		content += data.current.name;
 		content += "</option>";
 		for(i in data.groups) {
 			console.log(data.groups[i].id);
