@@ -111,17 +111,17 @@ table.fixed td { overflow: hidden; }
 #media_a img
 {
 	margin-right: 10px;
-	height:350px;
+	height:300px;
 	width:auto;
-	max-width:600px;
+	max-width:550px;
 }
 
 #media_b img
 {
 	margin-left: 10px;
-	height:350px;
+	height:300px;
 	width:auto;
-	max-width:600px;
+	max-width:500x;
 }
 
 
