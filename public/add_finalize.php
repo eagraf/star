@@ -72,7 +72,7 @@
 		$reference = query($query);
 		
 
-		redirect("board.php");
+		redirect("board.html");
 		
 		
     }

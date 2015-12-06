@@ -3,7 +3,7 @@
  * Helper functions for the User profile.
  * Sam Rackey 12/3/2015
  */
- 
+  
  function displayNav(element) {
 	 
 	var parameters = {};
@@ -15,10 +15,12 @@
 			content += "</p>";
 			content += "<li onclick=\"showGroups()\"><a>Groups</a></li>";
 			content += "<li onclick=\"displayTable('container');\"><a>Media</a></li>";
-			content += "<li><a href=\"upload.php\">Upload</a></li>";
+			content += "<li><a href=\"upload.html\">Upload</a></li>";
 			content += "<li onclick=\"showInfo()\"><a>Info</a></li>";
 			content += "</ul></div>";
 			document.getElementById(element).innerHTML = content;
+			
+			showGroups();
 		})
 		.fail(function(d, textStatus, error) {
 			 console.log(d);

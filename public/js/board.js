@@ -2,6 +2,7 @@
  * JavaScript code for leader board functions.
  * Ethan Graf 12/3//2ind15
  */
+ var categories;
  
  window.onload = function() {
 	 $.getJSON("board.php", {"type": "groups"})
@@ -10,8 +11,8 @@
 		console.log(data);
 	
 		var content = "<form action=\"change_group.php\" method=\"post\"><fieldset><div class=\"form-group\"><select class=\"form-control\" name=\"group\" onchange='this.form.submit()'>";
-		content += "<option disabled selected value=\"\">";
-		content += data.current;
+		content += "<option disabled selected value=\"" + data.current.id + "\">";
+		content += data.current.name;
 		content += "</option>";
 		for(i in data.groups) {
 			console.log(data.groups[i].id);
@@ -63,10 +64,11 @@
  function showCategories() {
 	 $.getJSON("board.php", {"type": "categories"})
 		.done(function(data, textStatus, jqXHR) {
-	
+			
+			categories = data;
 			console.log(data);
 			console.log(data[0]);
-			showCategory(data, 0);
+			showCategory(0);
 			
 	})
 	.fail(function(d, textStatus, error) {
@@ -77,9 +79,12 @@
 	});
  }
  
- function showCategory(categories, ind) {
-	 var ind = 0;
-	 var content = "<div><a class=\"btn btn-default\" role=\"button\" onclick=\"showCategory(" + categories + ", " + ind+1 + ")\">Next Category</a></div>";
+ function showCategory(ind) {
+	 var nextInd = ind++;
+	 if(nextInd == categories.length) {
+		 nextInd = 0;
+	 }
+	 var content = "<div><a class=\"btn btn-default\" role=\"button\" onclick=\"showCategory(" + nextInd + ")\">Next Category</a></div>";
 	 content += "<h1>" + categories[ind].name + "</h1>";  
  	 content += "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>Rating:</th><th>View:</th></tr></thead><tbody>";
 			for (var i in categories[ind].objects) { 

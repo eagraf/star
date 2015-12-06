@@ -27,6 +27,8 @@ window.onload = function() {
 			
 			reset();
 			setComparees();
+			
+			
 	})
 	.fail(function(d, textStatus, error) {
 		 
@@ -205,6 +207,11 @@ function compare(result) {
  function reset() {
 	 objectQueue = group.objects.slice();
 	 console.log(objectQueue);
+	 
+	 if(objectQueue.length < 2) {
+		var content = "<h1>Not enough objects to compare</h1>";
+		document.getElementById("middle").innerHTML = content;
+	}
  }
  
  /**

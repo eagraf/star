@@ -14,7 +14,7 @@
 						"</div>" +
 						"Select File to upload:" +
 						"<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">" +
-						"<input type=\"submit\" value=\"Submit\" name=\"submit\">" +
+						"<button class=\"btn btn-default\" type=\"submit\">Submit</button>" +
 				 "</form>";
 				 
 	document.getElementById("content").innerHTML = content;
@@ -28,7 +28,7 @@
 						"<div class=\"form-group\">" +
 							"<input autocomplete=\"off\" autofocus class=\"form-control\" name=\"link\" placeholder=\"Link\" type=\"text\" required />" +
 						"</div>" +
-						"<input type=\"submit\" value=\"Submit\" name=\"submit\">" +
+						"<button class=\"btn btn-default\" type=\"submit\">Submit</button>" +
 				 "</form>";
 				 
 	document.getElementById("content").innerHTML = content;
@@ -43,7 +43,7 @@
 						"<div class=\"form-group\">" +
 							"<input autocomplete=\"off\" autofocus class=\"form-control\" name=\"embed\" placeholder=\"Embed\" type=\"text\" required />" +
 						"</div>" +
-						"<input type=\"submit\" value=\"Submit\" name=\"submit\">" +
+						"<button class=\"btn btn-default\" type=\"submit\">Submit</button>" +
 				 "</form>";
 				 
 	document.getElementById("content").innerHTML = content;

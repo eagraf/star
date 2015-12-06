@@ -73,11 +73,11 @@
 			array_push($groups, $group);
 			
 		}
-		$result = query("SELECT name FROM groups WHERE id='" . $_SESSION['group_id'] . "';");
+		$result = query("SELECT id, name FROM groups WHERE id='" . $_SESSION['group_id'] . "';");
 		if(!empty($result)){
-			$res["current"] = $result[0]['name'];
+			$res["current"] = $result[0];
 		}else{
-			$res["current"] = "";
+			$res["current"] = array();
 		}
 		$res["groups"] = $groups;
 		
