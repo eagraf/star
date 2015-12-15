@@ -10,7 +10,7 @@
 			
 		console.log(data);
 	
-		var content = "<form action=\"change_group.php\" method=\"post\"><fieldset><div class=\"form-group\"><select class=\"form-control\" name=\"group\" onchange='this.form.submit()'>";
+		var content = "<form action=\"change_group.php\" method=\"get\"><fieldset><div class=\"form-group\"><select class=\"form-control\" name=\"group\" onchange='this.form.submit()'>";
 		content += "<option disabled selected value=\"" + data.current.id + "\">";
 		content += data.current.name;
 		content += "</option>";

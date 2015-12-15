@@ -13,6 +13,16 @@
 		</div>
 		
 		<div class="form-group">
+			<select class="form-control" name="protection">
+				<option disabled selected value="Users">Protection</option>
+					<option value='public'>Public</option>
+					<option value='private'>Private</option>
+					<option value='unlisted'>Unlisted</option>
+			</select>
+		</div>
+		
+		
+		<div class="form-group">
 			<?php
 				for($i = 0; $i < $cat_num; $i++){
 					$category = "category" . $i;
