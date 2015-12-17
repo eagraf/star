@@ -65,13 +65,16 @@
 	function getGroups() {
 		$res = array();
 		//get all groups the user is in, and print them
-		$names = query("SELECT group_id FROM group_member WHERE user_id = '" . $_SESSION['id'] . "';");
 		$groups = array();
-		foreach ($names as $name)
-		{
-			$group= query("SELECT id, name FROM groups WHERE id =" . $name["group_id"] .";")[0];
-			array_push($groups, $group);
+		//make sure we only try to get the user's groups if they are logged in
+		if(!empty($_SESSION['id'])){
+			$names = query("SELECT group_id FROM group_member WHERE user_id = '" . $_SESSION['id'] . "';");
+			foreach ($names as $name)
+			{
+				$group= query("SELECT id, name FROM groups WHERE id =" . $name["group_id"] .";")[0];
+				array_push($groups, $group);
 			
+			}
 		}
 		$result = query("SELECT id, name FROM groups WHERE id='" . $_SESSION['group_id'] . "';");
 		if(!empty($result)){
