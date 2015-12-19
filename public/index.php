@@ -9,9 +9,9 @@
 	//redirect("test.php");
 	
 	if(empty($_SESSION['id']))
-		redirect("/login.php");
+		redirect("/account/login.php");
 	else
-		redirect("/board.html");
+		redirect("/board/");
 	
 	
 	

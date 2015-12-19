@@ -217,25 +217,26 @@ function compare(result) {
  /**
   * Small helper function that displays media based on type.
   */
-	function displayMedia(object, dest) {
-	  switch(object.type) {
-		case "image":
-			displayImage(object.address, dest);
-			break;
-		case "audio":
-			displayAudio(object.address, dest);
-			break;
-		case "document":
-			displayDocument(object.address, dest);
-			break;
-		case "link":
-			displayLink(object.address, dest);
-			break;
-		case "embed":
-			displayEmbed(object.address, dest);
-			break;
+function displayMedia(object, dest) {
+  switch(object.type) {
+	case "image":
+		displayImage(object.address, dest);
+		break;
+	case "audio":
+		displayAudio(object.address, dest);
+		break;
+	case "document":
+		displayDocument(object.address, dest);
+		break;
+	case "link":
+		displayLink(object.address, dest);
+		break;
+	case "embed":
+		displayEmbed(object.address, dest);
+		break;
 	}
-  }
+}
+
 function test() {
 	$.get("glicko.php", {"comparisons": comparisons, "categories": group.categories})
 			.done(function(data, textStatus, jqXHR) {

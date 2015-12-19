@@ -8,7 +8,7 @@
 	 
 	var parameters = {};
 	
-	$.getJSON("get_media.php", parameters)
+	$.getJSON("../media/get_media.php", parameters)
 		.done(function(data, textStatus, jqXHR) {
 		
             var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>View:</th></tr></thead><tbody>";
@@ -40,7 +40,7 @@
 	 
 	var parameters = {};
 	
-	$.getJSON("get_media.php", parameters)
+	$.getJSON("../media/get_media.php", parameters)
 		.done(function(data, textStatus, jqXHR) {
 		
 			var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>View:</th><th>Insert:</th></tr></thead><tbody>";
@@ -76,7 +76,7 @@
  }
  
  function displayImage(address, element) {
-	var content = "<img src=\"" + address + "\" alt=\"hi\">";
+	var content = "<img src=\"" + "../" + address + "\" alt=\"hi\">";
 	if(element == "container") {
 		content+="<div class=\"form-group\">";
 		content+="<button class=\"btn btn-default\" onclick=\"displayTable('container')\"\>";
@@ -103,7 +103,7 @@
  }
  
  function displayAudio(address, element) {
-	 var content = "<audio controls><source src=\"" + address + "\"></audio>";
+	 var content = "<audio controls><source src=\"" + "../" + address + "\"></audio>";
 	 
 	 if(element == "container") {
 		content+="<div class=\"form-group\">";
@@ -131,7 +131,7 @@
  }
  
  function displayDocument(address, element) {
-	 var content = "<embed src=\"" + address + "\" width=\"600\" height=\"500\" alt=\"pdf\" pluginspage=\"http://www.adobe.com/products/acrobat/readstep2.html\">";
+	 var content = "<embed src=\"" + "../" + address + "\" width=\"600\" height=\"500\" alt=\"pdf\" pluginspage=\"http://www.adobe.com/products/acrobat/readstep2.html\">";
 	 
 	 if(element == "container") {
 		content+="<div class=\"form-group\">";
@@ -216,6 +216,7 @@
  }
  
  function printMedia(type, value, loc) {
+	 console.log("<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', '" + loc +"')\"\>View</button>");
 	 switch(type) {
 		 case "image":
 			return "<button class=\"btn btn-default\" onclick=\"displayImage('" + value  + "', '" + loc +"')\"\>View</button>";

@@ -15,7 +15,7 @@
 			content += "</p>";
 			content += "<li onclick=\"showGroups()\"><a>Groups</a></li>";
 			content += "<li onclick=\"displayTable('container');\"><a>Media</a></li>";
-			content += "<li><a href=\"upload.html\">Upload</a></li>";
+			content += "<li><a href=\"../media/upload.html\">Upload</a></li>";
 			content += "<li onclick=\"showInfo()\"><a>Info</a></li>";
 			content += "</ul></div>";
 			document.getElementById(element).innerHTML = content;

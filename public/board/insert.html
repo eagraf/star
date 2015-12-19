@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+	</head>
+		<!-- http://getbootstrap.com/ -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+
+        <link href="../css/style.css" rel="stylesheet"/>
+
+        <title>StarBoard</title>
+	
+		<!-- https://jquery.com/ -->
+        <script src="../js/jquery-1.11.3.min.js"></script>
+
+        <!-- http://getbootstrap.com/ -->
+        <script src="../js/bootstrap.min.js"></script>
+		
+		<script src="../js/media.js"></script>
+		
+		<script>
+			//Load header and footer.
+			jQuery(document).ready(function(){
+			   $('#top').load('../common/header.html');
+			   $('#bottom').load('../common/footer.html');
+		    });
+			
+			displayInsertTable("middle");
+		</script>
+
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div id="top"></div>
+			
+            <div id="middle">
+				<div id="media_table"></div>
+			</div>
+			
+		<div id="bottom"></div>
+
+	</div>
+
+	</body>
+	
+</html>
