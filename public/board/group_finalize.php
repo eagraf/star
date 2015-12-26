@@ -38,10 +38,10 @@
 
 		
 		if(empty($_SESSION['id'])){
-			redirect("login.php");
+			redirect("../account/login.php");
 		}else{
 			$_SESSION['group_id'] = $_POST['group_name'];
-			redirect("board.html");
+			redirect("/");
 		}
 		
 		

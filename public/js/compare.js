@@ -27,8 +27,6 @@ window.onload = function() {
 			
 			reset();
 			setComparees();
-			
-			
 	})
 	.fail(function(d, textStatus, error) {
 		 
@@ -39,9 +37,13 @@ window.onload = function() {
 	
 };
 
+/*
+ * Called before page is left, submits comparison information.
+ */
 window.onbeforeunload = function() {
 	parameters = {"comparisons": comparisons, "categories": group.categories};
 	
+	//This is not asynchronous so that the call can be completed before page is left.
 	$.ajax({
 		type: 'POST',
 		async: false,
@@ -123,6 +125,9 @@ function setComparees() {
 	displayMedia(objectB, "media_b");
 }
 
+/*
+ * Get a comparee randomly.
+ */
 function getComparee() {
 	var randIndex = Math.floor(Math.random() * (objectQueue.length));
 	var comparee = objectQueue[randIndex];

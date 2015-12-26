@@ -39,7 +39,7 @@
 			$category_object['name'] = $category['category'];
 			
 			$res = array();
-			$objects = query("SELECT object_id, rating FROM object_category ORDER BY rating DESC LIMIT 20;");
+			$objects = query("SELECT object_id, rating FROM object_category WHERE category_id='". $category['id'] . "' ORDER BY rating DESC LIMIT 20;");
 			foreach($objects as $object) {
 				$media = query("SELECT name, address, type FROM media WHERE id='" . $object['object_id'] . "';")[0];
 				$res_object = array_merge($object, $media);

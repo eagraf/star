@@ -13,15 +13,11 @@
 		
             var content = "<table class=\"table\"><thead><tr><th>Name:</th><th>Type:</th><th>View:</th></tr></thead><tbody>";
             for (var i in data) { 
-                content+="<tr>";
-                content+="<td style=\"text-align:left\">" + data[i].name + "</td>";
+                content+="<tr><td style=\"text-align:left\">" + data[i].name + "</td>";
 				content+="<td style=\"text-align:left\">" + data[i].type + "</td>";
-				content+="<td>";
-				content+="<div class=\"form-group\">";
+				content+="<td><div class=\"form-group\">";
 				content+=printMedia(data[i].type, data[i].address, "container");
-				content+="</div>";
-				content+="</td>";
-                content+="</tr>";
+				content+="</div></td></tr>";
             }
 			content+="</tbody></table></div>";
 			

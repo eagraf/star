@@ -94,7 +94,7 @@
 				content+="<td>" + categories[ind].objects[i].rating + "</td>";
 				content+="<td>";
 				content+="<div class=\"form-group\">";
-				content+=printMedia(categories[ind].objects[i].type, categories[ind].objects[i].address);
+				content+=printMedia(categories[ind].objects[i].type, categories[ind].objects[i].address, "content");
 				content+="</div>";
 				content+="</form></td>";
 				content+="</tr>";
